@@ -5,5 +5,8 @@
 	width: 80px !important;
 }
 .general-text{
-	width: 190px !important;
+	width: 240px !important;
+}
+.button{
+	padding-left: 30px;
 }
