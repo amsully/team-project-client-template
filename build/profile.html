@@ -14,6 +14,7 @@
     <link href="css/index.css" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/choose-city.css" rel="stylesheet">
+    <link href="css/leftbar.css" rel="stylesheet">
   </head>
   <body>
     <!-- Custom HTML goes here -->
@@ -118,46 +119,87 @@
     <!--            LEFT SIDE BAR                      -->
     <!-- ********************************************* -->
             <div class="col-md-2">
-                <div class="row">
-                        <div class="media">
-                            <div class="media-left media-top">
-                                PIC
-                            </div>
-                            <div class="media-right media-top">
-                                <a href="#">
-                                    Your Profile
-                                </a>
-                            </div>
+                <div class="row heading">
+                    <div class="media">
+                        <div class="media-left media-top">
+                             <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                        <div class="media-right media-top">
+                            <a href="#">
+                                Your Profile
+                            </a>
                         </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <a href="#">
+                            <span class="glyphicon glyphicon-cog"></span>
                             edit
                         </a>
                     </div>
-                    <div class="row">
-                        Personal Information
-                    </div>
-                    <div class="row">
+                </div>
+                <div class="row heading">
+                    <span class="glyphicon glyphicon-book"></span>
+                    Personal Information
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         Tim Richards
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        (413) 867-5309
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         Western Mass
                     </div>
-                    <div class="row">
-                        Your Recent Trips
-                    </div>
+                </div>
+                <div class="row heading">
+                    <span class="glyphicon glyphicon-plane"></span>
+                    Your Recent Trips
+                </div>
 
-                    <div class="row">
-                        Usage Statistics
+                <div class="row">
+                    <div class="col-md-12">
+                        <a>
+                        To: Boston for 2 days
+                        </a>
                     </div>
+                </div>
 
-                    <div class="row">
-                        Trips Taken
+                <div class="row">
+                    <div class="col-md-12">
+                        <a>
+                        To: NYC for 4 days
+                        </a>
                     </div>
-                    <div class="row">
-                        Trips Generated
-                    </div>
+                </div>
+
+                <div class="row heading">
+
+                    <span class="glyphicon glyphicon-signal"></span>
+                    Usage Statistics
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10">Trips Taken</div>
+                    <div class="col-md-2">2</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">Trips Generated</div>
+                    <div class="col-md-2">6</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">Days Travelled</div>
+                    <div class="col-md-2">7</div>
+                </div>
+                <div class="row">
+                    <a href="#" class="pull-right">See More...</a>
+                </div>
             </div>
 
     <!-- ********************************************* -->
@@ -184,7 +226,7 @@
                       <div class="media">
                       <div class="media-top">
                         <div class="row">
-                            <center>First Name</center> <center> <input type="text" class= "general-text"  placeholder="John"> <br> </center>
+                            <center>First Name</center> <center> <input type="text" class= "general-text"  placeholder="Tim"> <br> </center>
                           <div class="col-md-6">
                             <div class="pull-right">
                             </div>
@@ -194,7 +236,7 @@
                       <div class="media-body">
                         <div class="form-group">
                           <br>
-                          <center>Last Name</center> <center> <input type="text" class= "general-text" placeholder="Rodgers"> <br></center>
+                          <center>Last Name</center> <center> <input type="text" class= "general-text" placeholder="Richards"> <br></center>
                         </div>
                       </div>
                     </div>
@@ -202,7 +244,7 @@
                       <div class="media-body">
                         <div class="form-group">
                           <br>
-                          <center>Username</center><center>  <input type="text" class= "general-text" placeholder="Jrodgers"> <br></center>
+                          <center>Username</center><center>  <input type="text" class= "general-text" placeholder="TRichards"> <br></center>
                         </div>
                       </div>
                     </div>
@@ -220,7 +262,7 @@
                       <div class="media-body">
                         <div class="form-group">
                           <br>
-                          <center>Email</center><center>   <input type="text" class= "general-text" placeholder="Jrogers@umass.edu"> <br></center>
+                          <center>Email</center><center>   <input type="text" class= "general-text" placeholder="TRichards@umass.edu"> <br></center>
                         </div>
                       </div>
                     </div>
@@ -228,7 +270,7 @@
                     <div class="media">
                       <div class="media-top">
                         <div class="row">
-                            <center>Phone Number</center><center>   <input type="text" class= "general-text" placeholder="508-901-9842"> <br> </center>
+                            <center>Phone Number</center><center>   <input type="text" class= "general-text" placeholder="413-867-5309"> <br> </center>
                           <div class="col-md-6">
                             <div class="pull-right">
                             </div>
