@@ -6,3 +6,17 @@ body {
 .result{
 	background: #FFFFF0;
 }
+
+.panel {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+.trip-gen {
+	margin-top: 0px;
+}
+
+.rec-gen-title {
+	margin-left: 0px;
+}
