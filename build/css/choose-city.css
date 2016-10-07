@@ -3,7 +3,7 @@
 	top:100px;
 }
 .brdr {
-	border:3px solid blue;
+	border:1px solid blue;
 	border-radius:50px;
 	background-color:lightgrey;
 }
@@ -14,5 +14,10 @@
 }
 .left-space li {
 	padding-left:10px;
+}
+
+.atr-near-you li {
+	margin-left:5px;
+	border-bottom:1px solid lightgrey;
 }
 
