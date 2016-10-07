@@ -13,6 +13,8 @@
     <!-- Custom CSS goes here -->
     <link href="css/index.css" rel="stylesheet">
 
+    <link href="css/leftbar.css" rel="stylesheet">
+
   </head>
   <body>
     <!-- Custom HTML goes here -->
@@ -115,48 +117,88 @@
     <!-- ********************************************* -->
     <!--            LEFT SIDE BAR                      -->
     <!-- ********************************************* -->
-            <div class="col-md-2">
-                    <div class="row">
-                        <div class="media">
-                            <div class="media-left media-top">
-                                PIC
-                            </div>
-                            <div class="media-right media-top">
-                                <a href="#">
-                                    Your Profile
-                                </a>
-                            </div>
+            <div class="col-md-2 left-bar">
+                <div class="row heading">
+                    <div class="media">
+                        <div class="media-left media-top">
+                             <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                        <div class="media-right media-top">
+                            <a href="#">
+                                Your Profile
+                            </a>
                         </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <a href="#">
+                            <span class="glyphicon glyphicon-cog"></span>
                             edit
                         </a>
                     </div>
-                    <div class="row">
-                        Personal Information
-                    </div>
-                    <div class="row">
+                </div>
+                <div class="row heading">
+                    <span class="glyphicon glyphicon-book"></span>
+                    Personal Information
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         Tim Richards
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        (413) 867-5309
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         Western Mass
                     </div>
-                    <div class="row">
-                        Your Recent Trips
-                    </div>
+                </div>
+                <div class="row heading">
+                    <span class="glyphicon glyphicon-plane"></span>
+                    Your Recent Trips
+                </div>
 
-                    <div class="row">
-                        Usage Statistics
+                <div class="row">
+                    <div class="col-md-12">
+                        <a>
+                        To: Boston for 2 days
+                        </a>
                     </div>
+                </div>
 
-                    <div class="row">
-                        Trips Taken
+                <div class="row">
+                    <div class="col-md-12">
+                        <a>
+                        To: NYC for 4 days
+                        </a>
                     </div>
-                    <div class="row">
-                        Trips Generated
-                    </div>
+                </div>
 
+                <div class="row heading">
+
+                    <span class="glyphicon glyphicon-signal"></span>
+                    Usage Statistics
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10">Trips Taken</div>
+                    <div class="col-md-2">2</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">Trips Generated</div>
+                    <div class="col-md-2">6</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">Days Travelled</div>
+                    <div class="col-md-2">7</div>
+                </div>
+                <div class="row">
+                    <a href="#" class="pull-right">See More...</a>
+                </div>
             </div>
 
     <!-- ********************************************* -->
@@ -347,7 +389,63 @@
     <!--            RIGHT SIDE BAR                     -->
     <!-- ********************************************* -->
             <div class="col-md-3">
-                Blank
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Attractions Near You:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="media-list atr-near-you">
+                            <li class="media">
+                                <div class="media-left media-top">
+                                    Restaurant
+                                </div>
+
+                                <div class="media-body">
+                                    <a href="#">Local Burger</a><br>North Hampton, MA<br>17 miles away
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left media-top">
+                                    Restaurant
+                                </div>
+                                <div class="media-body">
+                                    <a href="#">Antonio's Pizza</a><br>Amherst, MA<br>5 miles away
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left media-top">
+                                    Restaurant
+                                </div>
+                                <div class="media-body">
+                                    <a href="#">Glazed</a><br> Amherst, MA<br>5 miles away
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left media-top">
+                                    Museum
+                                </div>
+                                <div class="media-body">
+                                    <a href="#">Emily Dickinson Museum</a><br> Amherst, MA<br>5 miles away
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left media-top">
+                                    Museum
+                                </div>
+                                <div class="media-body">
+                                    <a href="#">Mead Art Museum</a><br>Amherst, MA<br>10 miles away
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="#" class="pull-right">See More...</a>
+                    </div>
+                </div>
             </div>
 
 
