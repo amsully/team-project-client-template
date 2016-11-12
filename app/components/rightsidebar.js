@@ -1,4 +1,5 @@
 import React from 'react';
+import ActivityItem from './activityitem';
 export default
 class RightSideBar extends React.Component{
   render(){
@@ -32,6 +33,7 @@ class RightSideBar extends React.Component{
                               location="Amherst, MA"
                               stars="3.7" />
               </li>
+              <li role="presentation" id="fb-db-reset"></li>
             </ul>
           </div>
         </div>
