@@ -5,7 +5,18 @@ import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
 class MainPage extends React.Component {
   render() {
-    return <MainFeed/>;
+    return(
+      <MainFeed />
+    );
+  }
+}
+
+class EmptyPage extends React.Component {
+  render() {
+    return (
+      <div>
+      </div>
+    );
   }
 }
 
@@ -22,6 +33,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       {/* Show the Feed at / */}
       <IndexRoute component={MainPage} />
+      <Route path="" component={EmptyPage} />
     </Route>
   </Router>
-),document.getElementById('center-feed'));
+),document.getElementById("center-feed"));

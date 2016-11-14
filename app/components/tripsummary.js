@@ -3,6 +3,8 @@ export default
 class TripSummary extends React.Component{
   render(){
     return(
+      <div className="panel panel-default user-generated">
+        <div className="panel-body">
           <div className="media">
             <div className="media-top">
               <div className="row">
@@ -30,6 +32,8 @@ class TripSummary extends React.Component{
               </div>
             </div>
           </div>
+        </div>
+      </div>
     )
   }
 }
