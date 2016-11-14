@@ -2,12 +2,84 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Modify with your startup's name!
-var startupName = "Eastern Hawthorn";
-
-// Put your mock objects here, as in Workshop 4
 var initialData = {
+  "users": {
+         "1": {
+            "_id": 1,
+            "fullName": "Someone"
+            },
 
+
+  },
+  "feeds": {
+    "rightSideBar": {
+      "_id": 1,
+    “contents”:[]
+    },
+    "leftSideBar": {
+"_id": 2,
+        “contents”:[]
+},
+    "customizationPage": {
+"_id": 3,
+“contents”:[]
+},
+    "profile": {"_id": 4,
+“contents”:[]},
+    "userGenerated": {
+"_id": 5,
+“contents”:[]
+},
+    "mainPage": {
+"_id": 6,
+“contents”:[]
+},
+    "fullTrip": {"_id": 7}
+  },
+  "feedItem": {
+    "1": {
+      "_id": 1,
+      "type": "activityItem",
+      "contents": {
+            “”
+      }
+    }
+    "2": {
+      "_id": 2,
+      "type": "AccommodationItem",
+      "contents": {
+
+      }
+    }
+    "3": {
+      "_id": 3,
+      "type": "RestaurantItem",
+      "contents": {
+
+      }
+    }
+    "4": {
+      "_id": 4,
+      "type": "TripSummaryItem",
+    “trip_id”:1,
+      "contents": {
+
+      }
+    }
+  },
+  “trip”:{
+    “1”:{
+        “_id”:1,
+        “author”:2,
+    “accommodations”:[],
+    “restaurants”:[],
+    “activities”:[]
+    }
+  }
 };
+
+
+
 
 var data = JSON.parse(localStorage.getItem(startupName));
 if (data === null) {
