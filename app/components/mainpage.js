@@ -76,10 +76,12 @@ export default class MainPage extends React.Component{
                           </div>
                           <div className="col-md-6">
                             <div className="pull-right">
-                              <button type="button" className="btn btn-default">
-                                <span className="glyphicon glyphicon-search"></span>
-                                More Info
-                              </button>
+                              <Link to={"/full-trip/"}>
+                                <button type="button" className="btn btn-default" >
+                                  <span className="glyphicon glyphicon-search"></span>
+                                  More Info
+                                </button>
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -110,10 +112,12 @@ export default class MainPage extends React.Component{
                           </div>
                           <div className="col-md-6">
                             <div className="pull-right">
-                              <button type="button" className="btn btn-default">
-                                <span className="glyphicon glyphicon-search"></span>
-                                More Info
-                              </button>
+                              <Link to={"/full-trip/"}>
+                                <button type="button" className="btn btn-default" >
+                                  <span className="glyphicon glyphicon-search"></span>
+                                  More Info
+                                </button>
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -144,10 +148,12 @@ export default class MainPage extends React.Component{
                           </div>
                           <div className="col-md-6">
                             <div className="pull-right">
-                              <button type="button" className="btn btn-default">
-                                <span className="glyphicon glyphicon-search"></span>
-                                More Info
-                              </button>
+                              <Link to={"/full-trip/"}>
+                                <button type="button" className="btn btn-default" >
+                                  <span className="glyphicon glyphicon-search"></span>
+                                  More Info
+                                </button>
+                              </Link>
                             </div>
                           </div>
                         </div>
