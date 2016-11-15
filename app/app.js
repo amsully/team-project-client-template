@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './components/mainpage';
-import RightSideBar from './components/rightsidebar';
 import UserGeneratedPage from './components/usergeneratedpage';
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
@@ -27,9 +26,8 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       {/* Show the Feed at / */}
-      <IndexRoute component={Test} />
-      <Route path="profile/" component={ProfilePage} />
-      <Route path="trip/1/" component={FullTripPage} />
+      <IndexRoute component={MainPage} />
+
       <Route path="user-generated/" component={UserGeneratedPage} />
       <Route path="customize/" component={Test} />
 
