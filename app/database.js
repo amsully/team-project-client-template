@@ -7,32 +7,32 @@ var initialData = {
          "1": {
             "_id": 1,
             "fullName": "Someone"
-            },
+            }
 
 
   },
   "feeds": {
     "rightSideBar": {
       "_id": 1,
-    “contents”:[]
+      "contents":[]
     },
     "leftSideBar": {
 "_id": 2,
-        “contents”:[]
+        "contents":[]
 },
     "customizationPage": {
 "_id": 3,
-“contents”:[]
+"contents":[]
 },
     "profile": {"_id": 4,
-“contents”:[]},
+"contents":[]},
     "userGenerated": {
 "_id": 5,
-“contents”:[]
+"contents":[]
 },
     "mainPage": {
 "_id": 6,
-“contents”:[]
+"contents":[]
 },
     "fullTrip": {"_id": 7}
   },
@@ -40,40 +40,38 @@ var initialData = {
     "1": {
       "_id": 1,
       "type": "activityItem",
-      "contents": {
-            “”
-      }
-    }
+      "contents": {}
+    },
     "2": {
       "_id": 2,
       "type": "AccommodationItem",
       "contents": {
 
       }
-    }
+    },
     "3": {
       "_id": 3,
       "type": "RestaurantItem",
       "contents": {
 
       }
-    }
+    },
     "4": {
       "_id": 4,
       "type": "TripSummaryItem",
-    “trip_id”:1,
+    "trip_id":1,
       "contents": {
 
       }
     }
   },
-  “trip”:{
-    “1”:{
-        “_id”:1,
-        “author”:2,
-    “accommodations”:[],
-    “restaurants”:[],
-    “activities”:[]
+  "trip":{
+    "1":{
+        "_id":1,
+        "author":2,
+    "accommodations":[],
+    "restaurants":[],
+    "activities":[]
     }
   }
 };
@@ -81,7 +79,7 @@ var initialData = {
 
 
 
-var data = JSON.parse(localStorage.getItem(startupName));
+var data = JSON.parse(localStorage.getItem("shed_data"));
 if (data === null) {
   data = JSONClone(initialData);
 }
@@ -113,7 +111,7 @@ export function writeDocument(collection, changedDocument) {
   // Store a copy of the object into the database. Models a database's behavior.
   data[collection][id] = JSONClone(changedDocument);
   // Update our 'database'.
-  localStorage.setItem(startupName, JSON.stringify(data));
+  localStorage.setItem("shed_data", JSON.stringify(data));
 }
 
 /**
@@ -134,7 +132,7 @@ export function addDocument(collectionName, newDoc) {
  * Reset our browser-local database.
  */
 export function resetDatabase() {
-  localStorage.setItem(startupName, JSON.stringify(initialData));
+  localStorage.setItem("shed_data", JSON.stringify(initialData));
   data = JSONClone(initialData);
 }
 

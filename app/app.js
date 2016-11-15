@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainFeed from './components/mainfeed'
+import MainPage from './components/mainpage'
 import RightSideBar from './components/rightsidebar'
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
