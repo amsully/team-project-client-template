@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 export default class MainPage extends React.Component{
   render(){
@@ -54,8 +55,11 @@ export default class MainPage extends React.Component{
                 </div>
 
                 <div className="row rec-gen-title">
-                    <div className="col-xs-12">
+                    <div className="col-xs-6">
                         Recently generated near you!
+                    </div>
+                    <div className="col-xs-6">
+                        <Link to={"/user-generated/"}>Recently generate by you!</Link>
                     </div>
                 </div>
 
