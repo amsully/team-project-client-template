@@ -1,47 +1,53 @@
+import React from 'react';
+import Modal from './modal'
+import {Link} from 'react-router';
 
-                <!-- This is the bar that takes days and generates trips -->
-                <div class="panel panel-default trip-gen">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-12 trip-gen-header">
+export default class MainPage extends React.Component{
+  render(){
+    return(
+          <div className="center-bar">
+                <div className="panel panel-default trip-gen">
+                    <div className="panel-body">
+                        <div className="row">
+                            <div className="col-xs-12 trip-gen-header">
                                 <div>
                                     Generate a Trip!
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="pull-left">
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <div className="pull-left">
                                     Enter your start and end date and we will generate a trip near you!
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-9">
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <label for="startdate">Start:</label>
-                                        <input type="date" class="form-control" id="startdate">
+                        <div className="row">
+                            <div className="col-xs-9">
+                                <form className="form-inline">
+                                    <div className="form-group">
+                                        <label htmlFor="startdate">Start:</label>
+                                        <input type="date" className="form-control" id="startdate"/>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="enddate">End:</label>
-                                        <input type="date" class="form-control" id="enddate">
+                                    <div className="form-group">
+                                        <label htmlFor="enddate">End:</label>
+                                        <input type="date" className="form-control" id="enddate"/>
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-xs-3">
-                                <div class="pull-right">
-                                    <button type="button" class="btn btn-default">
+                            <div className="col-xs-3">
+                                <div className="pull-right">
+                                    <button type="button" className="btn btn-primary" data-toggle="modal" href="#generated">
                                         Generate
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-10"></div>
-                            <div class="col-md-2">
-                                <div class="pull-center">
+                        <div className="row">
+                            <div className="col-md-10"></div>
+                            <div className="col-md-2">
+                                <div className="pull-center">
                                     <a href="#">Customize</a>
                                 </div>
                             </div>
@@ -49,129 +55,143 @@
                     </div>
                 </div>
 
-                <!-- Recently Generated Title-->
-                <div class="row rec-gen-title">
-                    <div class="col-xs-12">
+                <div className="row rec-gen-title">
+                    <div className="col-xs-6">
                         Recently generated near you!
+                    </div>
+                    <div className="col-xs-6">
+                        <Link to={"/user-generated/"}>Recently generate by you!</Link>
                     </div>
                 </div>
 
-                <!-- Recently Generated Stream/Panel -->
-                <div class="panel panel-default user-generated">
-                  <div class="panel-body">
-                    <div class="media"><!--first example generation-->
-                      <div class="media-top"><!--small things to line up with button-->
-                        <div class="row">
-                          <div class="col-md-6">
-                            Generated By: <a href="#">John Doe</a><br><!--link to profile?-->
-                            Start: Amherst, MA<br>
-                            Destination: Boston, MA<br>
+                <div className="panel panel-default user-generated">
+                  <div className="panel-body">
+                    <div className="media">
+                      <div className="media-top">
+                        <div className="row">
+                          <div className="col-md-6">
+                            Generated By: <a href="#">John Doe</a><br/>
+                          Start: Amherst, MA<br/>
+                        Destination: Boston, MA<br/>
                             Date: 6/24/2011 - 6/24/2011
                           </div>
-                          <div class="col-md-6"><!--button to full trip details page for this trip-->
-                            <div class="pull-right">
-                              <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                                More Info
-                              </button>
+                          <div className="col-md-6">
+                            <div className="pull-right">
+                              <Link to={"/full-trip/"}>
+                                <button type="button" className="btn btn-default" >
+                                  <span className="glyphicon glyphicon-search"></span>
+                                  More Info
+                                </button>
+                              </Link>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="media-left"></div> <!--Adds a nice indent before the text-->
-                      <div class="media-body">
-                        <div class="form-group"><!--short description, possibly auto generated-->
-                          <br>
+                      <div className="media-left"></div>
+                      <div className="media-body">
+                        <div className="form-group">
+                          <br/>
                           A day trip to Boston by car for under $300.
                           Destinations include the Boston Aquarium and Franklin Park Zoo.
                           Planned restaurants include Italian Express Pizzeria and
                           The Capital Grille.
                         </div>
                       </div>
-                    </div><!--first example end-->
+                    </div>
                   </div>
                 </div>
-                <div class="panel panel-default user-generated">
-                  <div class="panel-body">
-                    <div class="media"><!--second example generation-->
-                      <div class="media-top"><!--small things to line up with button-->
-                        <div class="row">
-                          <div class="col-md-6">
-                            Generated By: <a href="#">Jane Doe</a><br><!--link to profile?-->
-                            Start: Boston, MA<br>
-                            Destination: Washington DC<br>
+                <div className="panel panel-default user-generated">
+                  <div className="panel-body">
+                    <div className="media">
+                      <div className="media-top">
+                        <div className="row">
+                          <div className="col-md-6">
+                            Generated By: <a href="#">Jane Doe</a><br/>
+                          Start: Boston, MA<br/>
+                        Destination: Washington DC<br/>
                             Date: 2/4/2014 - 2/10/2014
                           </div>
-                          <div class="col-md-6"><!--button to full trip details page for this trip-->
-                            <div class="pull-right">
-                              <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                                More Info
-                              </button>
+                          <div className="col-md-6">
+                            <div className="pull-right">
+                              <Link to={"/full-trip/"}>
+                                <button type="button" className="btn btn-default" >
+                                  <span className="glyphicon glyphicon-search"></span>
+                                  More Info
+                                </button>
+                              </Link>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="media-left"></div> <!--Adds a nice indent before the text-->
-                      <div class="media-body">
-                        <div class="form-group"><!--short description, possibly auto generated-->
-                          <br>
+                      <div className="media-left"></div>
+                      <div className="media-body">
+                        <div className="form-group">
+                          <br/>
                           A 7 day trip to Washington DC by airplane for under $9000.
                           Destinations include the Museum of Natural History and
                           the National Air and Space Museum.
                           Planned restaurants include We the Pizza and GrillFish.
                         </div>
                       </div>
-                    </div><!--second example end-->
+                    </div>
                   </div>
                 </div>
-                <div class="panel panel-default user-generated">
-                  <div class="panel-body">
-                    <div class="media"><!--third example generation-->
-                      <div class="media-top"><!--small things to line up with button-->
-                        <div class="row">
-                          <div class="col-md-6">
-                            Generated By: <a href="#">Dan Doe</a><br><!--link to profile?-->
-                            Start: Worcester, MA<br>
-                            Destination: Chatham, MA<br>
+                <div className="panel panel-default user-generated">
+                  <div className="panel-body">
+                    <div className="media">
+                      <div className="media-top">
+                        <div className="row">
+                          <div className="col-md-6">
+                            Generated By: <a href="#">Dan Doe</a><br/>
+                          Start: Worcester, MA<br/>
+                        Destination: Chatham, MA<br/>
                             Date: 3/29/2016 - 3/29/2016
                           </div>
-                          <div class="col-md-6"><!--button to full trip details page for this trip-->
-                            <div class="pull-right">
-                              <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                                More Info
-                              </button>
+                          <div className="col-md-6">
+                            <div className="pull-right">
+                              <Link to={"/full-trip/"}>
+                                <button type="button" className="btn btn-default" >
+                                  <span className="glyphicon glyphicon-search"></span>
+                                  More Info
+                                </button>
+                              </Link>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="media-left"></div> <!--Adds a nice indent before the text-->
-                      <div class="media-body">
-                        <div class="form-group"><!--short description, possibly auto generated-->
-                          <br>
+                      <div className="media-left"></div>
+                      <div className="media-body">
+                        <div className="form-group">
+                          <br/>
                           A day trip to Cape Cod by car for under $500.
                           Destinations include Nauset Beach and Chatham Lighthouse.
-                          Planned restaurants include Arnold's Restaurant and Longshore
+                          Planned restaurants include Arnolds Restaurant and Longshore
                           Restaurant.
                         </div>
                       </div>
-                    </div><!--third example end-->
+                    </div>
                   </div>
                 </div>
-                <!-- Load More -->
-                <div class="panel panel-default user-generated">
-                  <div class="panel-body">
-                    <div class="row"><!--button to load more examples in some way-->
-                      <div class="col-md-3"></div><!--centering-->
-                      <div class="col-md-4">
-                        <div class="pull-right">
-                          <button type="button" class="btn btn-default">
+
+                <div className="panel panel-default user-generated">
+                  <div className="panel-body">
+                    <div className="row">
+                      <div className="col-md-3"></div>
+                      <div className="col-md-4">
+                        <div className="pull-right">
+                          <button type="button" className="btn btn-default">
                             Load More
                           </button>
                         </div>
                       </div>
-                      <div class="col-md-5"></div><!--centering-->
+                      <div className="col-md-5"></div>
                     </div>
-                  </div><!--panel body end-->
+                  </div>
                 </div>
+                <div className="modal fade" id="generated">
+                  <Modal />
+                </div>
+            </div>
+    )
+  }
+}
