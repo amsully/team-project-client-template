@@ -2,17 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import User from './components/user';
 import MainPage from './components/mainpage'
-import RightSideBar from './components/rightsidebar'
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
-import MainPage from './components/mainpage';
 import Navbar from './components/navbar';
 import UserGeneratedPage from './components/usergeneratedpage';
 import FullTripPage from './components/fulltrip';
 import RightSideBar from './components/rightsidebar';
 import LeftSideBar from './components/leftsidebar';
 import Customize from './components/customize';
-import { IndexRoute, Router, Route, browserHistory } from 'react-router';
->>>>>>> e626d927360680a8b055f042949c8e33b8ee3c85
 
 class FullPage extends React.Component {
   render() {
@@ -37,7 +33,7 @@ class FullPage extends React.Component {
                   <Route path="user-generated/" component={UserGeneratedPage} />
                   <Route path="customize/" component={Customize} />
                   <Route path="full-trip/" component={FullTripPage} />
-                  <Route path="rsb-test/" component={RightSideBar} />
+                  <Route path="profile/" Component={User} />
                 </Route>
               </Router>
             </div>

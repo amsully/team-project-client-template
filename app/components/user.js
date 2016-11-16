@@ -15,14 +15,14 @@ export default class User extends React.Component{
                               <button type="button" className="btn btn-default">
                                 Save Changes
                               </button>
-                            </div>                            
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div className="media">
                       <div className="media-top">
                         <div className="row">
-                            <center>First Name</center> <center> <input type="text" className= "general-text"  placeholder="{this.props.author}"> <br> </center>
+                            <center>First Name</center> <center> <input type="text" className= "general-text"  placeholder="{this.props.author}" /> <br /> </center>
                           <div className="col-md-6">
                             <div className="pull-right">
                             </div>
@@ -31,34 +31,17 @@ export default class User extends React.Component{
                       </div>
                       <div className="media-body">
                         <div className="form-group">
-                          <br>
-                          <center>Last Name</center> <center> <input type="text" className= "general-text" placeholder="{this.props.author}"> <br></center>
+                          <br />
+                          <center>Last Name</center> <center> <input type="text" className= "general-text" placeholder= {this.props.author} /> <br /></center>
                         </div>
                       </div>
                     </div>
 
-                      <div className="media-body">
-                        <div className="form-group">
-                          <br>
-                          <center>Username</center><center>  <input type="text" className= "general-text" placeholder="{this.props.Username}"> <br></center>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="media">
-                      <div className="media-top">
-                        <div className="row">
-                            <center>Password</center><center> <input type="text" className= "general-text" placeholder="*********"> <br> </center>
-                          <div className="col-md-6">
-                            <div className="pull-right">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="media-body">
+                    <div className="media-body">
                         <div className="form-group">
-                          <br>
-                          <center>Email</center><center>   <input type="text" className= "general-text" placeholder="{this.props.Email}"> <br></center>
+                          <br />
+                          <center>Username</center><center>  <input type="text" className= "general-text" placeholder="{this.props.Username}" /> <br /></center>
                         </div>
                       </div>
                     </div>
@@ -66,7 +49,7 @@ export default class User extends React.Component{
                     <div className="media">
                       <div className="media-top">
                         <div className="row">
-                            <center>Phone Number</center><center>   <input type="text" className= "general-text" placeholder="{this.props.PhoneNumber}"> <br> </center>
+                            <center>Password</center><center> <input type="text" className= "general-text" placeholder="*********" /> <br /> </center>
                           <div className="col-md-6">
                             <div className="pull-right">
                             </div>
@@ -75,10 +58,28 @@ export default class User extends React.Component{
                       </div>
                       <div className="media-body">
                         <div className="form-group">
-                          <br>
-                          <center>Address</center><center>   <input type="text" className= "general-text" placeholder="{this.props.Address}"> <br> </center>
+                          <br />
+                          <center>Email</center><center>   <input type="text" className= "general-text" placeholder="{this.props.Email}" /> <br /></center>
                         </div>
-                        <center>Birthday</center><center>  <input type="text" className="birthday-search" placeholder="06"> <input type="text" className="birthday-search" placeholder="12"> <input type="text" className="birthday-year" placeholder="1994"> </center>
+                      </div>
+                    </div>
+
+                    <div className="media">
+                      <div className="media-top">
+                        <div className="row">
+                            <center>Phone Number</center><center>   <input type="text" className= "general-text" placeholder="{this.props.PhoneNumber}" /> <br /> </center>
+                          <div className="col-md-6">
+                            <div className="pull-right">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="media-body">
+                        <div className="form-group">
+                          <br />
+                          <center>Address</center><center>   <input type="text" className= "general-text" placeholder="{this.props.Address}" /> <br /> </center>
+                        </div>
+                        <center>Birthday</center><center>  <input type="text" className="birthday-search" placeholder="06" /> <input type="text" className="birthday-search" placeholder="12" /> <input type="text" className="birthday-year" placeholder="1994" /> </center>
                       </div>
 
                     </div>
