@@ -4,3 +4,4 @@ node_modules
 build/js/app.js
 build/npm-debug.log
 npm-debug.log
+*/.DS_STORE
