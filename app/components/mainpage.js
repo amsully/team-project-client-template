@@ -5,7 +5,7 @@ import {Link} from 'react-router';
 export default class MainPage extends React.Component{
   render(){
     return(
-      <div className="center-bar">
+          <div className="center-bar">
                 <div className="panel panel-default trip-gen">
                     <div className="panel-body">
                         <div className="row">

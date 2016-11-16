@@ -4,7 +4,6 @@ export default class LeftSideBar extends React.Component{
   render(){
     return(
       <div>
-        <div className="col-md-2 left-bar">
             <div className="row heading">
                 <div className="media">
                     <div className="media-left media-top">
@@ -86,7 +85,6 @@ export default class LeftSideBar extends React.Component{
             <div className="row">
                 <a href="#" className="pull-right">See More...</a>
             </div>
-        </div>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ActivityItem from './activityitem';
-export default
-class RightSideBar extends React.Component{
+
+export default class RightSideBar extends React.Component{
   render(){
     return(
       <div>
