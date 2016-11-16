@@ -1,9 +1,9 @@
 import React from 'react';
-export default
-class Modal extends React.Component{
+import {Link} from 'react-router';
+
+export default class Modal extends React.Component{
   render(){
     return(
-      <div className="modal fade" id="choose-city">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -20,22 +20,23 @@ class Modal extends React.Component{
                   <h2>Don't like any of these?</h2>
                   <ul className="list-inline">
                     <li>
-                      <button type="button" className="btn btn-primary btn-lg">
+                      <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" href="#generated">
                         Generate Again
                       </button>
                     </li>
                     <li> or </li>
                     <li>
-                      <button type="button" className="btn btn-primary btn-lg">
+                      <Link to={"/customize/"}>
+                      <button data-toggle="modal" href="#generated" type="button" className="btn btn-primary btn-lg">
                         Customize Preferences
                       </button>
+                      </Link>
                     </li>
                   </ul>
                 </div>
             </div>
           </div>
         </div>
-      </div>
     )
   }
 }

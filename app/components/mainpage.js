@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './modal'
 import {Link} from 'react-router';
 
 export default class MainPage extends React.Component{
@@ -36,7 +37,7 @@ export default class MainPage extends React.Component{
                             </div>
                             <div className="col-xs-3">
                                 <div className="pull-right">
-                                    <button type="button" className="btn btn-default">
+                                    <button type="button" className="btn btn-primary" data-toggle="modal" href="#generated">
                                         Generate
                                     </button>
                                 </div>
@@ -187,8 +188,10 @@ export default class MainPage extends React.Component{
                     </div>
                   </div>
                 </div>
+                <div className="modal fade" id="generated">
+                  <Modal />
+                </div>
             </div>
-
     )
   }
 }

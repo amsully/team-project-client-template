@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MainPage from './components/mainpage';
 import UserGeneratedPage from './components/usergeneratedpage';
 import FullTripPage from './components/fulltrip';
+import RightSideBar from './components/rightsidebar'
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
 class Test extends React.Component {
@@ -32,6 +33,7 @@ ReactDOM.render((
       <Route path="user-generated/" component={UserGeneratedPage} />
       <Route path="customize/" component={Test} />
       <Route path="full-trip/" component={FullTripPage} />
+      <Route path="rsb-test/" component={RightSideBar} />
     </Route>
   </Router>
 ),document.getElementById("center-feed"));
