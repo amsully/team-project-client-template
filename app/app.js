@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './components/mainpage'
+import User from './components/user'
 import RightSideBar from './components/rightsidebar'
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 
