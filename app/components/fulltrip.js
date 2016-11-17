@@ -2,6 +2,7 @@ import {getFullTripData} from '../server';
 
 import React from 'react';
 import AccommodationItem from './accommodationitem';
+import RestaurantItem from './restaurantitem';
 
 export default class FullTripPage extends React.Component{
 
@@ -29,13 +30,6 @@ export default class FullTripPage extends React.Component{
     return(
 
       <div>
-
-        {this.state.accommodations.map((feedItem) => {
-          return (
-            <AccommodationItem key={feedItem._id} data={feedItem} />
-          )
-        })}
-
       <div className="">
 
           <div className="panel panel-default">
@@ -157,107 +151,11 @@ export default class FullTripPage extends React.Component{
 
                   <div className="row pull-right">
                       <div className="col-md-12 pull">
-
-                          <div className="media">
-                              <div className="media-body">
-                                  <strong>Neptune Oyster</strong> - Seafood
-                                  <br/>
-                                  <strong>$$$</strong>
-                                  <br/>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                              </div>
-                              <div className="row pull-right">
-                                  <div className="col-md-12 pull">
-                                      <ul className="list-inline">
-                                          <li>
-                                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-
-                          </div>
-
-                          <hr/>
-
-                          <div className="media">
-                              <div className="media-body">
-                                  <strong>Neptune Oyster</strong> - Seafood
-                                  <br/>
-                                  <strong>$$$</strong>
-                                  <br/>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                              </div>
-                              <div className="row pull-right">
-                                  <div className="col-md-12 pull">
-                                      <ul className="list-inline">
-                                          <li>
-                                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-
-                          </div>
-
-                          <hr/>
-                          <div className="media">
-                              <div className="media-body">
-                                  <strong>Neptune Oyster</strong> - Seafood
-                                  <br/>
-                                  <strong>$$$</strong>
-                                  <br/>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                              </div>
-                              <div className="row pull-right">
-                                  <div className="col-md-12 pull">
-                                      <ul className="list-inline">
-                                          <li>
-                                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-
-                          </div>
-
-                          <hr/>
-                          <div className="media">
-                              <div className="media-body">
-                                  <strong>Neptune Oyster</strong> - Seafood
-                                  <br/>
-                                  <strong>$$$</strong>
-                                  <br/>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                              </div>
-                              <div className="row pull-right">
-                                  <div className="col-md-12 pull">
-                                      <ul className="list-inline">
-                                          <li>
-                                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-
-                          </div>
-
-                          <hr/>
-
-
-
+                        {this.state.restaurants.map((feedItem) => {
+                          return (
+                            <RestaurantItem key={feedItem._id} data={feedItem} />
+                          )
+                        })}
                       </div>
                   </div>
 

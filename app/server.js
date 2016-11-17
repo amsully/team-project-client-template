@@ -4,7 +4,7 @@ import {readDocument, writeDocument, addDocument} from './database.js';
  * Given a feed item ID, returns a FeedItem object with references resolved.
  * Internal to the server, since it's synchronous.
  */
-function getAccommodationItemSync(feedItemId) {
+function getFeedItemSync(feedItemId) {
     var feedItem = readDocument('feedItem', feedItemId);
 
     return feedItem;
@@ -22,7 +22,8 @@ export function getFullTripData(trip, cb) {
     // Map the Feed's FeedItem references to actual FeedItem objects.
     // Note: While map takes a callback function as an argument, it is
     // synchronous, not asynchronous. It calls the callback immediately.
-    tripData.accommodations = tripData.accommodations.map(getAccommodationItemSync);
+    tripData.accommodations = tripData.accommodations.map(getFeedItemSync);
+    tripData.restaurants    = tripData.restaurants.map(getFeedItemSync);
     // Return FeedData with resolved references.
     // emulateServerReturn will emulate an asynchronous server operation, which
     // invokes (calls) the "cb" function some time in the future.

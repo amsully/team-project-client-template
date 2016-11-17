@@ -68,6 +68,10 @@ var initialData = {
       "_id": 3,
       "type": "RestaurantItem",
       "contents": {
+        "type":"Seafood",
+        "name":"Neptune Oyster",
+        "price":"$$$",
+        "rating":4
       }
     },
     "4": {
@@ -108,6 +112,26 @@ var initialData = {
         "dates":"3/29/2016 - 3/29/2016",
         "summary":"A day trip to Cape Cod by car for under $500. Destinations include Nauset Beach and Chatham Lighthouse. Planned restaurants include Arnold's Restaurant and Longshore Restaurant."
       }
+    },
+    "7": {
+      "_id": 7,
+      "type": "RestaurantItem",
+      "contents": {
+        "type":"American",
+        "name":"McDonalds",
+        "price":"$",
+        "rating":1
+      }
+    },
+    "8": {
+      "_id": 8,
+      "type": "RestaurantItem",
+      "contents": {
+        "type":"American",
+        "name":"Burger King",
+        "price":"$",
+        "rating":1
+      }
     }
   },
 
@@ -116,7 +140,7 @@ var initialData = {
       "_id":1,
       "author":1,
       "accommodations":[2],
-      "restaurants":[],
+      "restaurants":[3,7,8],
       "activities":[]
     },
     "2":{
