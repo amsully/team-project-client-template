@@ -6,7 +6,13 @@ var initialData = {
   "users": {
       "1": {
         "_id": 1,
-        "fullName": "User",
+        "FirstName": "Tim",
+        "LastName": "Richards",
+        "Username": "TRichards",
+        "Password": "*********",
+        "Email": "TRichards@umass.edu",
+        "Phone Number": "413-867-5309",
+        "Address": "54 Madison Avenue", 
         "feed": 6
       }
   },
