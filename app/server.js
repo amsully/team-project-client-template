@@ -24,6 +24,7 @@ export function getFullTripData(trip, cb) {
     // synchronous, not asynchronous. It calls the callback immediately.
     tripData.accommodations = tripData.accommodations.map(getFeedItemSync);
     tripData.restaurants    = tripData.restaurants.map(getFeedItemSync);
+    tripData.activities     = tripData.activities.map(getFeedItemSync);
     // Return FeedData with resolved references.
     // emulateServerReturn will emulate an asynchronous server operation, which
     // invokes (calls) the "cb" function some time in the future.

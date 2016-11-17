@@ -51,8 +51,13 @@ var initialData = {
   "feedItem": {
     "1": {
       "_id": 1,
-      "type": "activityItem",
-      "contents": {}
+      "type": "ActivityItem",
+      "contents": {
+        "name":"New England Aquarium",
+        "type":"Aquarium",
+        "price":"$$$",
+        "rating":3
+      }
     },
     "2": {
       "_id": 2,
@@ -132,6 +137,26 @@ var initialData = {
         "price":"$",
         "rating":1
       }
+    },
+    "9": {
+      "_id": 9,
+      "type": "ActivityItem",
+      "contents": {
+        "name":"Boston Common",
+        "type":"Parks and Recreation",
+        "price":"$",
+        "rating":4
+      }
+    },
+    "10": {
+      "_id": 10,
+      "type": "ActivityItem",
+      "contents": {
+        "name":"Fanuil Hall",
+        "type":"Historic Site",
+        "price":"$",
+        "rating":5
+      }
     }
   },
 
@@ -141,7 +166,7 @@ var initialData = {
       "author":1,
       "accommodations":[2],
       "restaurants":[3,7,8],
-      "activities":[]
+      "activities":[1,9,10]
     },
     "2":{
       "_id":2,

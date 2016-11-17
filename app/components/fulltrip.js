@@ -3,6 +3,7 @@ import {getFullTripData} from '../server';
 import React from 'react';
 import AccommodationItem from './accommodationitem';
 import RestaurantItem from './restaurantitem';
+import ActivityItemFull from './activityitemfull';
 
 export default class FullTripPage extends React.Component{
 
@@ -178,81 +179,13 @@ export default class FullTripPage extends React.Component{
 
                           </div>
 
-                          <hr/>
-                          <div className="media">
-                              <div className="media-body">
-                                  <strong>New England Aquarium</strong> - Seafood (lol)
-                                  <br/>
-                                  <strong>$$$</strong>
-                                  <br/>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                              </div>
-                              <div className="row pull-right">
-                                  <div className="col-md-12 pull">
-                                      <ul className="list-inline">
-                                          <li>
-                                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <hr/>
-                          <div className="media">
-                              <div className="media-body">
-                                  <strong>Boston Common</strong> - Parks and Recreation
-                                  <br/>
-                                  <strong>$</strong>
-                                  <br/>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-
-                              </div>
-                              <div className="row pull-right">
-                                  <div className="col-md-12 pull">
-                                      <ul className="list-inline">
-                                          <li>
-                                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <hr/>
-                          <div className="media">
-                              <div className="media-body">
-                                  <strong>Fanuil Hall</strong> - Historic Site (?)
-                                  <br/>
-                                  <strong>$</strong>
-                                  <br/>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-                                  <span className="glyphicon glyphicon-star"></span>
-
-                              </div>
-                              <div className="row pull-right">
-                                  <div className="col-md-12 pull">
-                                      <ul className="list-inline">
-                                          <li>
-                                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-
-
+                          {this.state.activities.map((feedItem) => {
+                            return (
+                              <ActivityItemFull key={feedItem._id} data={feedItem} />
+                            )
+                          })}
                       </div>
                   </div>
-
               </div>
           </div>
 
