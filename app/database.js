@@ -30,7 +30,7 @@ var initialData = {
     },
     "userGenerated": {
       "_id": 5,
-      "contents":[4,5,6]
+      "contents":[]
     },
     "mainPage": {
       "_id": 6,
