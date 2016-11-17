@@ -10,6 +10,12 @@ import RightSideBar from './components/rightsidebar';
 import LeftSideBar from './components/leftsidebar';
 import Customize from './components/customize';
 
+class FullTripPageSet extends React.Component {
+    render() {
+        return <FullTripPage trip={1}/>;
+    }
+}
+
 class FullPage extends React.Component {
   render() {
     return (
@@ -32,7 +38,7 @@ class FullPage extends React.Component {
 
                   <Route path="user-generated/" component={UserGeneratedPage} />
                   <Route path="customize/" component={Customize} />
-                  <Route path="full-trip/" component={FullTripPage} />
+                  <Route path="full-trip/" component={FullTripPageSet} />
                   <Route path="profile/" Component={User} />
                 </Route>
               </Router>

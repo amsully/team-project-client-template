@@ -1,10 +1,42 @@
+import {getFullTripData} from '../server';
+
 import React from 'react';
+import AccommodationItem from './accommodationitem';
 
 export default class FullTripPage extends React.Component{
+
+  constructor(props) {
+    super(props);
+      this.state = {
+        accommodations: [],
+        author:0,
+        restaurants:[],
+        activities:[]
+      };
+  }
+
+  refresh() {
+      getFullTripData(this.props.trip, (feedData) => {
+        this.setState(feedData);
+    });
+  }
+
+  componentDidMount() {
+    this.refresh();
+  }
+
   render(){
     return(
+
       <div>
-      <div className="col-md-7">
+
+        {this.state.accommodations.map((feedItem) => {
+          return (
+            <AccommodationItem key={feedItem._id} data={feedItem} />
+          )
+        })}
+
+      <div className="">
 
           <div className="panel panel-default">
 
@@ -79,14 +111,14 @@ export default class FullTripPage extends React.Component{
                               <div className="media-left media-top">
                                   <h3>Accomodation</h3>
                               </div>
-
                               <div className="media-body">
-                                  <strong>Type:</strong> Hotel
-                                  <br/>
-                                  <strong>Name:</strong><a href="#"> The Westin Copley Place</a>
-                                  <br/>
-                                  <strong>Est. Price:</strong> $299/Night
-                                  <span className="glyphicon glyphicon-user"></span> 1 Person
+
+                                {this.state.accommodations.map((feedItem) => {
+                                  return (
+                                    <AccommodationItem key={feedItem._id} data={feedItem} />
+                                  )
+                                })}
+
                               </div>
                           </div>
                       </div>

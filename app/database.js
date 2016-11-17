@@ -12,7 +12,7 @@ var initialData = {
         "Password": "*********",
         "Email": "TRichards@umass.edu",
         "Phone Number": "413-867-5309",
-        "Address": "54 Madison Avenue", 
+        "Address": "54 Madison Avenue",
         "feed": 6
       }
   },
@@ -58,6 +58,10 @@ var initialData = {
       "_id": 2,
       "type": "AccommodationItem",
       "contents": {
+        "type":"hotel",
+        "name":"The Westin Copley Place",
+        "price":"$299 per night",
+        "people":2
       }
     },
     "3": {
@@ -111,7 +115,7 @@ var initialData = {
     "1":{
       "_id":1,
       "author":1,
-      "accommodations":[],
+      "accommodations":[2],
       "restaurants":[],
       "activities":[]
     },
