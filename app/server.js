@@ -1,4 +1,4 @@
-import {readDocument, writeDocument, addDocument} from './database.js';
+import {readDocument, writeDocument, addDocument,feedItemsLength} from './database.js';
 
 /**
  * Given a feed item ID, returns a FeedItem object with references resolved.
@@ -31,6 +31,22 @@ export function getFullTripData(trip, cb) {
     emulateServerReturn(tripData, cb);
 }
 
+export function getMOdalTripSums(userID, cb) {
+    var tripSums = [];
+    var i = feedItemsLength();
+    for(var j=0;j<=3;i--){
+      var item = readDocument('feedItem',i);
+      if(item.type == "TripSummaryItem"){
+        if(item.contents.author == userID){
+          item.contents.author = readDocument('users',item.contents.author);
+          item.contents.trip = getFullTripData(item.trip_id);
+          tripSums[j] = item;
+          j++;
+        }
+      }
+    }
+    emulateServerReturn(tripSums, cb);
+}
 
 
 
