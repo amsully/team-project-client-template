@@ -27,7 +27,6 @@ export default class FeedItem extends React.Component {
                   <div className="col-md-12 pull">
                       <ul className="list-inline">
                           <li>
-                              <a href="#"><span className="glyphicon glyphicon-refresh"></span> Regenerate</a>
                           </li>
                       </ul>
                   </div>
