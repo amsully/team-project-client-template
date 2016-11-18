@@ -1,5 +1,26 @@
+import {getUser} from '../server';
+
 import React from 'react';
+
 export default class User extends React.Component{
+
+  constructor(props) {
+    super(props);
+      this.state = {
+      contents: []
+      };
+  }
+
+  refresh() {
+    getUser(this.props.user, (feedData) => {
+    this.setState(feedData);
+    });
+  }
+
+
+  componentDidMount() {
+    this.refresh();
+  }
   render(){
     return(
       <div className="panel panel-default profile">
