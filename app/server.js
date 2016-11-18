@@ -13,7 +13,7 @@ function getFeedItemSync(feedItemId) {
 function getUser(usersId, cb) {
     var users = readDocument('users', usersId);
     var feedData = readDocument('feeds', users.feed);
-    feedData.contents.unshift(newStatusUpdate._id);
+    feedData.contents.unshift(users._id);
 // Update the feed object.
     writeDocument('feeds', feedData);
 // Return the newly-posted object.
