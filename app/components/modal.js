@@ -1,5 +1,5 @@
 import React from 'react';
-import TripSummary from './tripsummary';
+import TripSummary from './tripsumdb';
 import {Link} from 'react-router';
 import {getModalTripSums} from '../server';
 
@@ -35,13 +35,7 @@ export default class Modal extends React.Component{
                 {this.state.tripSums.map((feedItem) => {
                   return (
                     <li>
-                      <TripSummary key={feedItem._id}
-                        author= {feedItem.contents.author}
-                        trip={feedItem.trip_id}
-                        start={feedItem.contents.start}
-                        destination={feedItem.contents.destination}
-                        dates={feedItem.contents.dates}
-                        summary={feedItem.contents.summary} />
+                      <TripSummary key={feedItem._id} data="feedItem" />
                     </li>);
                   })}
               </ul>

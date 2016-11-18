@@ -35,12 +35,12 @@ export function getMOdalTripSums(userID, cb) {
     var tripSums = [];
     var i = feedItemsLength();
     for(var j=0;j<=3;i--){
-      var item = readDocument('feedItem',i);
+      var item = readDocument('feedItem',4);
       if(item.type == "TripSummaryItem"){
         if(item.contents.author == userID){
           item.contents.author = readDocument('users',item.contents.author);
           item.contents.trip = getFullTripData(item.trip_id);
-          tripSums[j] = item;
+          tripSums[0] = item;
           j++;
         }
       }
