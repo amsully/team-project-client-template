@@ -213,6 +213,17 @@ export function readDocument(collection, id) {
 }
 
 /**
+ * Emulates reading multiple "documents" from a NoSQL database.
+ * Doesn't do any tricky document joins, as we will cover that in the latter
+ * half of the course. :)
+ */
+export function readDocuments(collection) {
+  // Clone the data. We do this to model a database, where you receive a
+  // *copy* of an object and not the object itself.
+  return JSONClone(data[collection]);
+}
+
+/**
  * Emulates writing a "document" to a NoSQL database.
  */
 export function writeDocument(collection, changedDocument) {

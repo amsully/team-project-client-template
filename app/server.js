@@ -1,4 +1,4 @@
-import {readDocument, writeDocument, addDocument} from './database.js';
+import {readDocument, writeDocument, addDocument, readDocuments} from './database.js';
 
 /**
  * Given a feed item ID, returns a FeedItem object with references resolved.
@@ -31,8 +31,11 @@ export function getFullTripData(trip, cb) {
     emulateServerReturn(tripData, cb);
 }
 
+export function getRecentTrips(cb) {
+    var tripsData = readDocuments('trip');
 
-
+    emulateServerReturn(tripsData, cb)
+}
 
 /**
  * Emulates how a REST call is *asynchronous* -- it calls your function back
