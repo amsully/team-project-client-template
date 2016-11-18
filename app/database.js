@@ -255,6 +255,13 @@ export function resetDatabase() {
   localStorage.setItem("shed_data", JSON.stringify(initialData));
   data = JSONClone(initialData);
 }
+export function feedItemsLength() {
+  var nextId = Object.keys('feedItem').length;
+  while ("feedItem"[nextId]) {
+    nextId++;
+  }
+  return nextId - 1;
+}
 
 /**
  * Reset database button.

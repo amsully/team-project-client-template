@@ -34,6 +34,8 @@ export function getFullTripData(trip, cb) {
 export function getRecentTrips(cb) {
     var tripsData = readDocuments('trip');
 
+
+
     emulateServerReturn(tripsData, cb)
 }
 

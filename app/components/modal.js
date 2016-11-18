@@ -1,7 +1,25 @@
 import React from 'react';
+import TripSummary from './tripsumdb';
 import {Link} from 'react-router';
+import {getModalTripSums} from '../server';
 
 export default class Modal extends React.Component{
+  constructor(props) {
+    super(props);
+      this.state = {
+        tripSums: []
+      };
+  }
+
+  refresh() {
+      getModalTripSums(1,(feedData) => {
+        this.setState(feedData);
+    });
+  }
+
+  componentDidMount() {
+    this.refresh();
+  }
   render(){
     return(
         <div className="modal-dialog" role="document">
@@ -13,7 +31,14 @@ export default class Modal extends React.Component{
               <h1 className="modal-title">Generated Vacations</h1>
             </div>
             <div className="modal-body">
-//Trip summary items will go here
+              <ul className="media-list">
+                {this.state.tripSums.map((feedItem) => {
+                  return (
+                    <li>
+                      <TripSummary key={feedItem._id} data="feedItem" />
+                    </li>);
+                  })}
+              </ul>
             </div>
             <div className="modal-footer">
               <div className="text-center">
