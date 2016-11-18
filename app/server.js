@@ -10,6 +10,16 @@ function getFeedItemSync(feedItemId) {
     return feedItem;
 }
 
+function getUser(usersId, cb) {
+    var users = readDocument('users', usersId);
+    var feedData = readDocument('feeds', users.feed);
+    feedData.contents.unshift(users._id);
+// Update the feed object.
+    writeDocument('feeds', feedData);
+// Return the newly-posted object.
+    emulateServerReturn(users, cb);
+}
+
 /**
  * Emulates a REST call to get the feed data for a particular user.
  * @param user The ID of the user whose feed we are requesting.
