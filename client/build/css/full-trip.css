@@ -1,0 +1,12 @@
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.center{
+	text-align: center;
+}
+
+.blue{
+  background-color: #B0E0E6;
+}
