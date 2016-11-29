@@ -12,9 +12,10 @@ export default class Modal extends React.Component{
   }
 
   refresh() {
-      getModalTripSums(1,(feedData) => {
-        this.setState(feedData);
-    });
+    // You never created this method in server.js and broke things.
+    //   getModalTripSums(1,(feedData) => {
+    //     this.setState(feedData);
+    // });
   }
 
   componentDidMount() {
