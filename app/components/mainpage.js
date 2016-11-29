@@ -54,6 +54,15 @@ export default class MainPage extends React.Component{
                 <div className="modal fade" id="generated">
                   <Modal />
                 </div>
+
+                <div className="row">
+                  <Link to={"/full-trip/"}>
+                    <button type="button" className="btn btn-default" >
+                     <span className="glyphicon glyphicon-search"></span>
+                     Dummy Button to get to full trip.
+                   </button>
+                  </Link>
+                </div>
             </div>
     )
   }
