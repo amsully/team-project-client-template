@@ -1,4 +1,4 @@
-import {readDocument, writeDocument, addDocument, readDocuments} from './database.js';
+import {readDocument, writeDocument, addDocument, getCollection} from './database.js';
 
 /**
  * Given a feed item ID, returns a FeedItem object with references resolved.
@@ -42,7 +42,7 @@ export function getFullTripData(trip, cb) {
 }
 
 export function getRecentTrips(cb) {
-    var tripsData = readDocuments('trip');
+    var tripsData = getCollection('trip');
 
 
 

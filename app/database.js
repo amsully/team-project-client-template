@@ -217,7 +217,7 @@ export function readDocument(collection, id) {
  * Doesn't do any tricky document joins, as we will cover that in the latter
  * half of the course. :)
  */
-export function readDocuments(collection) {
+export function getCollection(collection) {
   // Clone the data. We do this to model a database, where you receive a
   // *copy* of an object and not the object itself.
   return JSONClone(data[collection]);

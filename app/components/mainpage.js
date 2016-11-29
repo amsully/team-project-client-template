@@ -38,7 +38,18 @@ export default class MainPage extends React.Component{
                     </div>
                 </div>
 
-
+                {this.state.trips.map((trip) => {
+                  return (
+                    <TripSummary key={trip._id}
+                              author={trip.author}
+                              trip={trip._id}
+                              start={"Boston, MA"}
+                              destination={"Washington DC"}
+                              dates={"2/4/2014 - 2/10/2014"}
+                              summary={"A 7 day trip to Washington DC by airplane for under $9000. Destinations include the Museum of Natural History and the National Air and Space Museum. Planned restaurants include We the Pizza and GrillFish."}>
+                    </TripSummary>
+                  )
+                })}
 
                 <div className="modal fade" id="generated">
                   <Modal />
@@ -47,20 +58,3 @@ export default class MainPage extends React.Component{
     )
   }
 }
-
-
-
-/*
-{this.state.trips.map((trip) => {
-  return (
-    <TripSummary key={trip._id}
-              author={trip.author}
-              trip={trip._id}
-              start={"Boston, MA"}
-              destination={"Washington DC"}
-              dates={"2/4/2014 - 2/10/2014"}
-              summary={"A 7 day trip to Washington DC by airplane for under $9000. Destinations include the Museum of Natural History and the National Air and Space Museum. Planned restaurants include We the Pizza and GrillFish."}>
-    </TripSummary>
-  )
-})}
-*/
