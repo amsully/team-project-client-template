@@ -9,7 +9,7 @@ import FullTripPage from './components/fulltrip';
 import RightSideBar from './components/rightsidebar';
 import LeftSideBar from './components/leftsidebar';
 import Customize from './components/customize';
-
+import ErrorBanner from './components/errorbanner'
 class FullTripPageSet extends React.Component {
     render() {
         return <FullTripPage trip={1}/>;
@@ -59,7 +59,14 @@ class FullPage extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      <div>{this.props.children}</div>
+      <div>
+        <div className="row">
+          <div className="col-md-12">
+            <ErrorBanner />
+          </div>
+        </div>
+        {this.props.children}
+      </div>
     );
   }
 }

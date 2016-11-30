@@ -1,4 +1,73 @@
-import {readDocument, writeDocument, addDocument, getCollection} from './database.js';
+import {
+    readDocument,
+    writeDocument,
+    addDocument,
+    getCollection
+} from './database.js';
+
+var token = ''; // <-- Put your base64'd JSON token here
+/**
+ * Properly configure+send an XMLHttpRequest with error handling,
+ * authorization token, and other needed properties.
+ */
+function sendXHR(verb, resource, body, cb) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(verb, resource);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    // The below comment tells ESLint that FacebookError is a global.
+    // Otherwise, ESLint would complain about it! (See what happens in Atom if
+    // you remove the comment...)
+    /* global SHEDError */
+    // Response received from server. It could be a failure, though!
+    xhr.addEventListener('load', function() {
+        var statusCode = xhr.status;
+        var statusText = xhr.statusText;
+        if (statusCode >= 200 && statusCode < 300) {
+            // Success: Status code is in the [200, 300) range.
+            // Call the callback with the final XHR object.
+            cb(xhr);
+        } else {
+            // Client or server error.
+            // The server may have included some response text with details concerning
+            // the error.
+            var responseText = xhr.responseText;
+            SHEDError('Could not ' + verb + " " + resource + ": Received " +
+                statusCode + " " + statusText + ": " + responseText);
+        }
+    });
+    // Time out the request if it takes longer than 10,000
+    // milliseconds (10 seconds)
+    xhr.timeout = 10000;
+    // Network failure: Could not connect to server.
+    xhr.addEventListener('error', function() {
+        SHEDError('Could not ' + verb + " " + resource +
+            ": Could not connect to the server.");
+    });
+    // Network failure: request took too long to complete.
+    xhr.addEventListener('timeout', function() {
+        SHEDError('Could not ' + verb + " " + resource +
+            ": Request timed out.");
+    });
+    switch (typeof(body)) {
+        case 'undefined':
+            // No body to send.
+            xhr.send();
+            break;
+        case 'string':
+            // Tell the server we are sending text.
+            xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+            xhr.send(body);
+            break;
+        case 'object':
+            // Tell the server we are sending JSON.
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            // Convert body into a JSON string.
+            xhr.send(JSON.stringify(body));
+            break;
+        default:
+            throw new Error('Unknown body type: ' + typeof(body));
+    }
+}
 
 /**
  * Given a feed item ID, returns a FeedItem object with references resolved.
@@ -14,9 +83,9 @@ function getUser(usersId, cb) {
     var users = readDocument('users', usersId);
     var feedData = readDocument('feeds', users.feed);
     feedData.contents.unshift(users._id);
-// Update the feed object.
+    // Update the feed object.
     writeDocument('feeds', feedData);
-// Return the newly-posted object.
+    // Return the newly-posted object.
     emulateServerReturn(users, cb);
 }
 
@@ -26,19 +95,25 @@ function getUser(usersId, cb) {
  * @param cb A Function object, which we will invoke when the Feed's data is available.
  */
 export function getFullTripData(trip, cb) {
-    // Get the User object with the id "user".
-    var tripData = readDocument('trip', trip);
+    // We don't need to send a body, so pass in 'undefined' for the body.
+    sendXHR('GET', '/full-trip/1', undefined, (xhr) => {
+      // Call the callback with the data.
+      cb(JSON.parse(xhr.responseText));
+    });
 
-    // Map the Feed's FeedItem references to actual FeedItem objects.
-    // Note: While map takes a callback function as an argument, it is
-    // synchronous, not asynchronous. It calls the callback immediately.
-    tripData.accommodations = tripData.accommodations.map(getFeedItemSync);
-    tripData.restaurants    = tripData.restaurants.map(getFeedItemSync);
-    tripData.activities     = tripData.activities.map(getFeedItemSync);
-    // Return FeedData with resolved references.
-    // emulateServerReturn will emulate an asynchronous server operation, which
-    // invokes (calls) the "cb" function some time in the future.
-    emulateServerReturn(tripData, cb);
+    // // Get the User object with the id "user".
+    // var tripData = readDocument('trip', trip);
+    //
+    // // Map the Feed's FeedItem references to actual FeedItem objects.
+    // // Note: While map takes a callback function as an argument, it is
+    // // synchronous, not asynchronous. It calls the callback immediately.
+    // tripData.accommodations = tripData.accommodations.map(getFeedItemSync);
+    // tripData.restaurants = tripData.restaurants.map(getFeedItemSync);
+    // tripData.activities = tripData.activities.map(getFeedItemSync);
+    // // Return FeedData with resolved references.
+    // // emulateServerReturn will emulate an asynchronous server operation, which
+    // // invokes (calls) the "cb" function some time in the future.
+    // emulateServerReturn(tripData, cb);
 }
 
 export function getRecentTrips(cb) {
@@ -54,7 +129,7 @@ export function getRecentTrips(cb) {
  * some time in the future with data.
  */
 function emulateServerReturn(data, cb) {
-  setTimeout(() => {
-    cb(data);
-  }, 4);
+    setTimeout(() => {
+        cb(data);
+    }, 4);
 }
