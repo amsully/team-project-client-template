@@ -177,12 +177,17 @@ export default class FullTripPage extends React.Component{
                               </div>
 
                           </div>
-
-                          {this.state.activities.map((feedItem) => {
-                            return (
-                              <ActivityItemFull key={feedItem._id} data={feedItem} />
-                            )
-                          })}
+                      </div>
+                  </div>
+                  <hr/>
+                  <div className="row pull-right">
+                      <div className="col-md-12 pull">
+                        {this.state.activities.map((feedItem) => {
+                          feedItem.author = 0
+                          return (
+                            <ActivityItemFull key={feedItem._id} data={feedItem} />
+                          )
+                        })}
                       </div>
                   </div>
               </div>
