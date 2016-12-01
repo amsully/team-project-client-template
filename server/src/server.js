@@ -125,14 +125,22 @@ app.get('/modal/trip-sums',function(req,res){
 });
 
 
-function getRecentTrips(cb) {
+function getRecentTrips() {
     var tripsData = getCollection('trip');
-    return cb(tripsData)
+    return tripsData
 }
 
 app.get('/trips/', function(req, res) {
-  res.send(getRecentTrips)
+  res.send(getRecentTrips())
 })
+
+function getUser(userid) {
+  // get user information, not yet written
+}
+
+app.get('/users/:userid', function(req, res) {
+    res.send(getUser);
+});
 
 // Starts the server on port 3000!
 app.listen(3000, function() {

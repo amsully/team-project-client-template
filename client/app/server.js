@@ -79,14 +79,18 @@ function getFeedItemSync(feedItemId) {
     return feedItem;
 }
 
-function getUser(usersId, cb) {
-    var users = readDocument('users', usersId);
+export function getUser(userid, cb) {
+    /**var users = readDocument('users', usersId);
     var feedData = readDocument('feeds', users.feed);
     feedData.contents.unshift(users._id);
     // Update the feed object.
     writeDocument('feeds', feedData);
     // Return the newly-posted object.
-    emulateServerReturn(users, cb);
+    emulateServerReturn(users, cb);**/
+    sendXHR('GET', '/users/' + userid, undefined, (xhr) => {
+      // double check this
+      cb(JSON.parse(xhr.responseText));
+    });
 }
 
 export function getModalTrips(cb){
@@ -137,7 +141,10 @@ export function deleteFeedItem(feedItemId, tripId, cb) {
 export function getRecentTrips(cb) {
     /**var tripsData = getCollection('trip');
     emulateServerReturn(tripsData, cb)**/
-    sendXHR('GET', '/trips/', undefined, ()=> {cb();});
+    sendXHR('GET', '/trips/', undefined, ()=> {
+      // Double check this
+      cb(JSON.parse(xhr.responseText));
+    });
 }
 
 /**
