@@ -123,6 +123,15 @@ export function getFullTripData(trip, cb) {
     // emulateServerReturn(tripData, cb);
 }
 
+/**
+ * Deletes a activity item.
+ */
+export function deleteFeedItem(feedItemId, cb) {
+    sendXHR('DELETE', '/feeditem/' + feedItemId, undefined, () => {
+        cb();
+    });
+}
+
 export function getRecentTrips(cb) {
     var tripsData = getCollection('trip');
 

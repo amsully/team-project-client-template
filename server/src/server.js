@@ -23,6 +23,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 function getFeedItemSync(feedItemId) {
+    console.log("feedItemId:");
+    console.log(feedItemId);
     var feedItem = database.readDocument('feedItem', feedItemId);
 
     return feedItem;
@@ -30,6 +32,7 @@ function getFeedItemSync(feedItemId) {
 
 function getFullTripData(trip) {
     // Get the User object with the id "user".
+    console.log(trip);
     var tripData = database.readDocument('trip', trip);
 
     // Map the Feed's FeedItem references to actual FeedItem objects.
@@ -51,6 +54,53 @@ app.get('/full-trip/:tripid', function(req, res) {
   // Send response.
   res.send(getFullTripData(tripid));
 });
+
+// Reset database.
+app.post('/resetdb', function(req, res) {
+    console.log("Resetting database...");
+    // This is a debug route, so don't do any validation.
+    database.resetDatabase();
+    // res.send() sends an empty response with status code 200
+    res.send();
+});
+
+/**
+ * Delete a feed item.
+ */
+// app.delete('/feeditem/:feeditemid', function(req, res) {
+//     // TODO: Add Authorization
+//     var fromUser = 0; // getUserIdFromToken(req.get('Authorization'));
+//     // Convert from a string into a number.
+//     var feedItemId = parseInt(req.params.feeditemid, 10);
+//     var feedItem = database.readDocument('feedItem', feedItemId);
+//
+//     // Check that the author of the post is requesting the delete.
+//
+//     if (feedItem.author === fromUser) {
+//         database.deleteDocument('feedItem', feedItemId);
+//         // Remove references to this feed item from all other feeds.
+//         var trips = database.getCollection('trip');
+//         var tripIds = Object.keys(trips);
+//         tripIds.forEach((tripId) => {
+//             var trip = trips[tripId];
+//             var itemIdx = trip.activities.indexOf(feedItemId);
+//             if (itemIdx !== -1) {
+//                 // Splice out of array.
+//                 trip.contents.splice(itemIdx, 1);
+//                 // Update feed.
+//                 database.writeDocument('trip', trip);
+//             }
+//         });
+//
+//         // TODO: Add checks for all accommodations and restaurants.
+//
+//         // Send a blank response to indicate success.
+//         res.send();
+//     } else {
+//         // 401: Unauthorized.
+//         res.status(401).end();
+//     }
+// });
 
 function getModalTrips(){
   var trips = [];
