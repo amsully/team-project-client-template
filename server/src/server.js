@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
+var readDocument = database.readDocument;
 
 // You run the server from `server`, so `../client/build` is `server/../client/build`.
 // '..' means "go up one directory", so this translates into `client/build`!
@@ -52,9 +53,22 @@ app.get('/full-trip/:tripid', function(req, res) {
 });
 
 function getModalTrips(){
-
+  var trips = [];
+  var trip1 = getFeedItemSync(4);
+  var user = readDocument('users',trip1.contents.author);
+  trip1.contents.author = user.FirstName + " " + user.LastName;
+  trips.push(trip1);
+  var trip2 = getFeedItemSync(5);
+  user = readDocument('users',trip2.contents.author);
+  trip2.contents.author = user.FirstName + " " + user.LastName;
+  trips.push(trip2);
+  var trip3 = getFeedItemSync(6);
+  user = readDocument('users',trip3.contents.author);
+  trip3.contents.author = user.FirstName + " " + user.LastName;
+  trips.push(trip3);
+  return trips;
 }
-app.get('modal/trip-sums',function(req,res){
+app.get('/modal/trip-sums',function(req,res){
   res.send(getModalTrips());
 });
 // Starts the server on port 3000!
