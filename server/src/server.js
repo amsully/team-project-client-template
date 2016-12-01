@@ -51,6 +51,12 @@ app.get('/full-trip/:tripid', function(req, res) {
   res.send(getFullTripData(tripid));
 });
 
+function getModalTrips(){
+
+}
+app.get('modal/trip-sums',function(req,res){
+  res.send(getModalTrips());
+});
 // Starts the server on port 3000!
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');

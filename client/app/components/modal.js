@@ -1,7 +1,7 @@
 import React from 'react';
 import TripSummary from './tripsumdb';
 import {Link} from 'react-router';
-import {getModalTripSums} from '../server';
+import {getModalTrips} from '../server';
 
 export default class Modal extends React.Component{
   constructor(props) {

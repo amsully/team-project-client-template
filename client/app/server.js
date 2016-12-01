@@ -89,6 +89,13 @@ function getUser(usersId, cb) {
     emulateServerReturn(users, cb);
 }
 
+export function getModalTrips(cb){
+  sendXHR('GET', '/modal/trip-sums', undefined, (xhr) => {
+    // Call the callback with the data.
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
 /**
  * Emulates a REST call to get the feed data for a particular user.
  * @param user The ID of the user whose feed we are requesting.
