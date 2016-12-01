@@ -1,9 +1,15 @@
 import React from 'react';
+import {hideElement} from '../util';
 export default class FeedItem extends React.Component {
   constructor(props) {
   super(props);
     // The FeedItem's initial state is what the Feed passed to us.
     this.state = props.data;
+  }
+
+  onDelete(e) {
+    e.preventDefault();
+    this.props.onDelete();
   }
 
     render() {
@@ -12,6 +18,20 @@ export default class FeedItem extends React.Component {
 
         return (
 <div>
+          <div className="row">
+            <div className="col-md-10">
+            </div>
+            <div className="col-md-2">
+              <div className={"dropdown"}>
+                <span className="caret pull-right dropdown-toggle" data-toggle="dropdown"></span>
+                <ul className="dropdown-menu">
+                  <li className={hideElement(false)}><a onClick={(e) => this.onDelete(e)}>Delete</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
           <div className="media">
 
 

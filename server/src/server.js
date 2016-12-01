@@ -23,8 +23,6 @@ app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 function getFeedItemSync(feedItemId) {
-    console.log("feedItemId:");
-    console.log(feedItemId);
     var feedItem = database.readDocument('feedItem', feedItemId);
 
     return feedItem;
@@ -32,7 +30,6 @@ function getFeedItemSync(feedItemId) {
 
 function getFullTripData(trip) {
     // Get the User object with the id "user".
-    console.log(trip);
     var tripData = database.readDocument('trip', trip);
 
     // Map the Feed's FeedItem references to actual FeedItem objects.
@@ -67,40 +64,44 @@ app.post('/resetdb', function(req, res) {
 /**
  * Delete a feed item.
  */
-// app.delete('/feeditem/:feeditemid', function(req, res) {
-//     // TODO: Add Authorization
-//     var fromUser = 0; // getUserIdFromToken(req.get('Authorization'));
-//     // Convert from a string into a number.
-//     var feedItemId = parseInt(req.params.feeditemid, 10);
-//     var feedItem = database.readDocument('feedItem', feedItemId);
-//
-//     // Check that the author of the post is requesting the delete.
-//
-//     if (feedItem.author === fromUser) {
-//         database.deleteDocument('feedItem', feedItemId);
-//         // Remove references to this feed item from all other feeds.
-//         var trips = database.getCollection('trip');
-//         var tripIds = Object.keys(trips);
-//         tripIds.forEach((tripId) => {
-//             var trip = trips[tripId];
-//             var itemIdx = trip.activities.indexOf(feedItemId);
-//             if (itemIdx !== -1) {
-//                 // Splice out of array.
-//                 trip.contents.splice(itemIdx, 1);
-//                 // Update feed.
-//                 database.writeDocument('trip', trip);
-//             }
-//         });
-//
-//         // TODO: Add checks for all accommodations and restaurants.
-//
-//         // Send a blank response to indicate success.
-//         res.send();
-//     } else {
-//         // 401: Unauthorized.
-//         res.status(401).end();
-//     }
-// });
+app.delete('/feeditem/:feeditemid', function(req, res) {
+    // TODO: Add Authorization
+    var fromUser = 1; // getUserIdFromToken(req.get('Authorization'));
+    // Convert from a string into a number.
+    var tripId = req.body.tripId;
+    var authorId = 1; // TODO: GET AUTHOR ID FROM tripID
+
+    var feedItemId = parseInt(req.params.feeditemid, 10);
+    // var feedItem = database.readDocument('feedItem', feedItemId);
+
+    // Check that the author of the post is requesting the delete.
+    if (authorId === fromUser) {
+        database.deleteDocument('feedItem', feedItemId);
+        // Remove references to this feed item from all other feeds.
+        var trips = database.getCollection('trip');
+        var tripIds = Object.keys(trips);
+        tripIds.forEach((tripId) => {
+            var trip = trips[tripId];
+
+            // PARSE INT IS IMPORTANT.
+            var itemIdx = trip.activities.indexOf(parseInt(feedItemId));
+            if (itemIdx !== -1) {
+                // Splice out of array.
+                trip.activities.splice(itemIdx, 1);
+                // Update feed.
+                database.writeDocument('trip', trip);
+            }
+        });
+
+        // TODO: Add checks for all accommodations and restaurants.
+
+        // Send a blank response to indicate success.
+        res.send();
+    } else {
+        // 401: Unauthorized.
+        res.status(401).end();
+    }
+});
 
 function getModalTrips(){
   var trips = [];

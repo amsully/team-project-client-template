@@ -1,4 +1,4 @@
-import {getFullTripData} from '../server';
+import {getFullTripData, deleteFeedItem} from '../server';
 
 import React from 'react';
 import AccommodationItem from './accommodationitem';
@@ -15,6 +15,12 @@ export default class FullTripPage extends React.Component{
         restaurants:[],
         activities:[]
       };
+  }
+
+  deleteFeedItem(id, tripid) {
+      deleteFeedItem(id, tripid, () => {
+          this.refresh();
+      });
   }
 
   refresh() {
@@ -183,9 +189,10 @@ export default class FullTripPage extends React.Component{
                   <div className="row pull-right">
                       <div className="col-md-12 pull">
                         {this.state.activities.map((feedItem) => {
-                          feedItem.author = 0
+                          // TODO: Trip being acted upon.
+                          var tripId = 1;
                           return (
-                            <ActivityItemFull key={feedItem._id} data={feedItem} />
+                            <ActivityItemFull key={feedItem._id} data={feedItem} onDelete={() => this.deleteFeedItem(feedItem._id, tripId)} />
                           )
                         })}
                       </div>
