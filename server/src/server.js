@@ -65,11 +65,11 @@ app.post('/resetdb', function(req, res) {
 /**
  * Delete a feed item.
  */
-app.delete('/feeditem/:feeditemid', function(req, res) {
+app.delete('/full-trip/:tripid/feeditem/:feeditemid', function(req, res) {
     // TODO: Add Authorization
     var fromUser = 1; // getUserIdFromToken(req.get('Authorization'));
     // Convert from a string into a number.
-    var tripId = req.body.tripId;
+    var tripId = req.params.tripid;
     var authorId = 1; // TODO: GET AUTHOR ID FROM tripID
 
     var feedItemId = parseInt(req.params.feeditemid, 10);

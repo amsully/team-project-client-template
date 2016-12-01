@@ -131,7 +131,7 @@ export function getFullTripData(trip, cb) {
  * Deletes a activity item.
  */
 export function deleteFeedItem(feedItemId, tripId, cb) {
-    sendXHR('DELETE', '/feeditem/' + feedItemId, {
+    sendXHR('DELETE', 'full-trip/' + tripId + '/feeditem/' + feedItemId, {
         tripId: tripId
     }, () => {
         cb();
