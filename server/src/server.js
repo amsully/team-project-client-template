@@ -12,6 +12,7 @@ var app = express();
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
 var readDocument = database.readDocument;
+var getCollection = database.getCollection;
 
 // You run the server from `server`, so `../client/build` is `server/../client/build`.
 // '..' means "go up one directory", so this translates into `client/build`!
@@ -121,6 +122,17 @@ function getModalTrips(){
 app.get('/modal/trip-sums',function(req,res){
   res.send(getModalTrips());
 });
+
+
+function getRecentTrips(cb) {
+    var tripsData = getCollection('trip');
+    return cb(tripsData)
+}
+
+app.get('/trips/', function(req, res) {
+  res.send(getRecentTrips)
+})
+
 // Starts the server on port 3000!
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');

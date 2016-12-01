@@ -133,11 +133,9 @@ export function deleteFeedItem(feedItemId, cb) {
 }
 
 export function getRecentTrips(cb) {
-    var tripsData = getCollection('trip');
-
-
-
-    emulateServerReturn(tripsData, cb)
+    /**var tripsData = getCollection('trip');
+    emulateServerReturn(tripsData, cb)**/
+    sendXHR('GET', '/trips/', undefined, ()=> {cb();});
 }
 
 /**
