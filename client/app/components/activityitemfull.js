@@ -24,7 +24,7 @@ export default class FeedItem extends React.Component {
             <div className="col-md-2">
               <div className={"dropdown"}>
                 <span className="caret pull-right dropdown-toggle" data-toggle="dropdown"></span>
-                <ul className="dropdown-menu">
+                <ul className="pull-right dropdown-menu">
                   <li className={hideElement(false)}><a onClick={(e) => this.onDelete(e)}>Delete</a></li>
                 </ul>
               </div>

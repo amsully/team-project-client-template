@@ -77,24 +77,35 @@ app.delete('/feeditem/:feeditemid', function(req, res) {
 
     // Check that the author of the post is requesting the delete.
     if (authorId === fromUser) {
-        database.deleteDocument('feedItem', feedItemId);
-        // Remove references to this feed item from all other feeds.
+        // We don't want to delete our restaurant data!
+        // database.deleteDocument('feedItem', feedItemId);
+
         var trips = database.getCollection('trip');
-        var tripIds = Object.keys(trips);
-        tripIds.forEach((tripId) => {
-            var trip = trips[tripId];
+        // var tripIds = Object.keys(trips);
+        var trip = trips[tripId];
 
-            // PARSE INT IS IMPORTANT.
-            var itemIdx = trip.activities.indexOf(parseInt(feedItemId));
-            if (itemIdx !== -1) {
-                // Splice out of array.
-                trip.activities.splice(itemIdx, 1);
-                // Update feed.
-                database.writeDocument('trip', trip);
-            }
-        });
-
-        // TODO: Add checks for all accommodations and restaurants.
+        // PARSE INT IS IMPORTANT.
+        var itemIdx = trip.activities.indexOf(parseInt(feedItemId));
+        if (itemIdx !== -1) {
+            // Splice out of array.
+            trip.activities.splice(itemIdx, 1);
+            // Update feed.
+            database.writeDocument('trip', trip);
+        }
+        itemIdx = trip.accommodations.indexOf(parseInt(feedItemId));
+        if (itemIdx !== -1) {
+            // Splice out of array.
+            trip.accommodations.splice(itemIdx, 1);
+            // Update feed.
+            database.writeDocument('trip', trip);
+        }
+        itemIdx = trip.restaurants.indexOf(parseInt(feedItemId));
+        if (itemIdx !== -1) {
+            // Splice out of array.
+            trip.restaurants.splice(itemIdx, 1);
+            // Update feed.
+            database.writeDocument('trip', trip);
+        }
 
         // Send a blank response to indicate success.
         res.send();

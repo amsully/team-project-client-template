@@ -115,8 +115,9 @@ export default class FullTripPage extends React.Component{
                               <div className="media-body">
 
                                 {this.state.accommodations.map((feedItem) => {
+                                  var tripId = 1;
                                   return (
-                                    <AccommodationItem key={feedItem._id} data={feedItem} />
+                                    <AccommodationItem key={feedItem._id} data={feedItem} onDelete={() => this.deleteFeedItem(feedItem._id, tripId)} />
                                   )
                                 })}
 
@@ -158,8 +159,9 @@ export default class FullTripPage extends React.Component{
                   <div className="row pull-right">
                       <div className="col-md-12 pull">
                         {this.state.restaurants.map((feedItem) => {
+                          var tripId = 1;
                           return (
-                            <RestaurantItem key={feedItem._id} data={feedItem} />
+                            <RestaurantItem key={feedItem._id} data={feedItem} onDelete={() => this.deleteFeedItem(feedItem._id, tripId)} />
                           )
                         })}
                       </div>
