@@ -16,7 +16,7 @@ export default class MainPage extends React.Component{
 
   refresh() {
       getRecentTrips((trips) => {
-        this.setState(trips);
+        this.setState({trips: Object.keys(trips).map(k => trips[k])});
     });
   }
 
