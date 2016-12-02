@@ -8,7 +8,7 @@ var initialData = {
         "Username": "TRichards",
         "Password": "*********",
         "Email": "TRichards@umass.edu",
-        "Phone Number": "413-867-5309",
+        "PhoneNumber": "413-867-5309",
         "Address": "54 Madison Avenue",
         "feed": 6
       }

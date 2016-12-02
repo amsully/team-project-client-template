@@ -153,6 +153,61 @@ app.get('/users/:userid', function(req, res) {
     res.send(getUser);
 });
 
+app.put('/users/:userid', function(req,res) {
+    var fromUser = 1; // getUserIdFromToken(req.get('Authorization'));
+    var userid = req.params.userid;
+    var authorId = 1; 
+    var feedItemId = parseInt(req.params.feeditemid, 10);
+    // var feedItem = database.readDocument('feedItem', feedItemId);
+
+    // Check that the author of the post is requesting the delete.
+    if (authorId === fromUser) {
+
+        var users = database.getCollection('users');
+        var user = users[userid];
+
+        // PARSE INT IS IMPORTANT.
+        var index = user.FirstName.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }
+        index = user.LastName.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }
+        index = user.Username.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }
+        index = user.Password.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }
+        index = user.Email.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }
+        index = user.PhoneNumber.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }
+        index = user.Address.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }index = user.Feed.indexOf(parseInt(feedItemId));
+        if (index !== -1) {
+            database.writeDocument('users', users);
+        }
+
+        // Send a blank response to indicate success.
+        res.send();
+    } else {
+        // 401: Unauthorized.
+        res.status(401).end();
+    }
+});
+
+
 // Starts the server on port 3000!
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
