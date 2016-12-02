@@ -147,15 +147,15 @@ app.get('/trips/', function(req, res) {
 
 function getUser(userid) {
   var userData = readDocument('users', userid);
-
   return userData;
 }
 
 app.get('/users/:userid', function(req, res) {
-    res.send(getUser);
+    var userid = req.params.userid;
+    res.send(getUser(userid));
 });
 
-export function updateUser(userid){
+function updateUser(userid){
     var userData = database.readDocument('users', userid);
 
     // Map the Feed's FeedItem references to actual FeedItem objects.

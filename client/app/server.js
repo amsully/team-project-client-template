@@ -146,7 +146,7 @@ export function deleteFeedItem(feedItemId, tripId, cb) {
 export function getRecentTrips(cb) {
     /**var tripsData = getCollection('trip');
     emulateServerReturn(tripsData, cb)**/
-    sendXHR('GET', '/trips/', undefined, ()=> {
+    sendXHR('GET', '/trips/', undefined, (xhr)=> {
       // Double check this
       cb(JSON.parse(xhr.responseText));
     });
