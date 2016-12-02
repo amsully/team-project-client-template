@@ -146,12 +146,15 @@ app.get('/trips/', function(req, res) {
 })
 
 function getUser(userid) {
-  // get user information, not yet written
+  var userData = readDocument('users', userid);
+
+  return userData;
 }
 
 app.get('/users/:userid', function(req, res) {
     res.send(getUser);
 });
+
 export function updateUser(userid){
     var userData = database.readDocument('users', userid);
 
@@ -175,7 +178,7 @@ export function updateUser(userid){
 app.put('/users/:userid', function(req,res) {
     var fromUser = 1; // getUserIdFromToken(req.get('Authorization'));
     var userid = req.params.userid;
-    var authorId = 1; 
+    var authorId = 1;
     var feedItemId = parseInt(req.params.feeditemid, 10);
     // var feedItem = database.readDocument('feedItem', feedItemId);
 
