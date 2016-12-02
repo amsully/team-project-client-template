@@ -72,7 +72,7 @@ function getModalTrips(){
   trips.trip3 = trip3;
   return trips;
 }
-app.get('/modal/trip-sums',function(req,res){
+app.get('/modal/',function(req,res){
   res.send(getModalTrips());
 });
 // Starts the server on port 3000!

@@ -90,7 +90,7 @@ function getUser(usersId, cb) {
 }
 
 export function getModalTrips(cb){
-  sendXHR('GET', '/modal/trip-sums', undefined, (xhr) => {
+  sendXHR('GET', '/modal/', undefined, (xhr) => {
     // Call the callback with the data.
     cb(JSON.parse(xhr.responseText));
   });
