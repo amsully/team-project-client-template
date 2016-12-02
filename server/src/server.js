@@ -174,11 +174,7 @@ app.get('/users/:userid', function(req, res) {
     res.send(getUser(userid));
 });
 
-<<<<<<< HEAD
 function updateUser(userid){
-=======
- function updateUser(userid){
->>>>>>> 40c057a7242d0d6d58facc496156a9855d708782
     var userData = database.readDocument('users', userid);
 
     // Map the Feed's FeedItem references to actual FeedItem objects.
