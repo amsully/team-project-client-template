@@ -92,7 +92,7 @@ export function getUser(userid, cb) {
       cb(JSON.parse(xhr.responseText));
     });
 }
-export function updateUser(feedItemId, userid, cb){
+export function updateUser(userid, cb){
     sendXHR('PUT', '/users/' + userid, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
 });

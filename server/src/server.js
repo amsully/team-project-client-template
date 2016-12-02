@@ -152,6 +152,25 @@ function getUser(userid) {
 app.get('/users/:userid', function(req, res) {
     res.send(getUser);
 });
+export function updateUser(userid){
+    var userData = database.readDocument('users', userid);
+
+    // Map the Feed's FeedItem references to actual FeedItem objects.
+    // Note: While map takes a callback function as an argument, it is
+    // synchronous, not asynchronous. It calls the callback immediately.
+    userData.FirstName      = userData.FirstName.map(getFeedItemSync);
+    userData.LastName       = userData.LastName.map(getFeedItemSync);
+    userData.Username       = userData.Username.map(getFeedItemSync);
+    userData.Password       = userData.Password.map(getFeedItemSync);
+    userData.Email          = userData.Email.map(getFeedItemSync);
+    userData.PhoneNumber    = userData.PhoneNumber.map(getFeedItemSync);
+    userData.Address        = userData.Address.map(getFeedItemSync);
+    userData.feed           = userData.feed.map(getFeedItemSync);
+    // Return FeedData with resolved references.
+    // emulateServerReturn will emulate an asynchronous server operation, which
+    // invokes (calls) the "cb" function some time in the future.
+    return userData;
+}
 
 app.put('/users/:userid', function(req,res) {
     var fromUser = 1; // getUserIdFromToken(req.get('Authorization'));
@@ -194,7 +213,7 @@ app.put('/users/:userid', function(req,res) {
         index = user.Address.indexOf(parseInt(feedItemId));
         if (index !== -1) {
             database.writeDocument('users', users);
-        }index = user.Feed.indexOf(parseInt(feedItemId));
+        }index = user.feed.indexOf(parseInt(feedItemId));
         if (index !== -1) {
             database.writeDocument('users', users);
         }
