@@ -152,6 +152,15 @@ export function getRecentTrips(cb) {
     });
 }
 
+export function getUserTrips(author, cb) {
+    /**var tripsData = getCollection('trip');
+    emulateServerReturn(tripsData, cb)**/
+    sendXHR('GET', '/trips/:userid', undefined, (xhr)=> {
+      // Double check this
+      cb(JSON.parse(xhr.responseText));
+    });
+}
+
 /**
  * Emulates how a REST call is *asynchronous* -- it calls your function back
  * some time in the future with data.
