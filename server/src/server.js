@@ -145,6 +145,25 @@ app.get('/trips/', function(req, res) {
   res.send(getRecentTrips())
 })
 
+function getUserTrips(author) {
+    var trips = getCollection('trip');
+    var userTrips = [];
+    var utSpot = 0;
+    for(var q=0; q<trips.length; q++){
+      if(trips[q].type == 'TripSummaryItem'){
+        if(trips[q].contents.author == author){
+          userTrips[utSpot] = trips[q];
+          utSpot++;
+        }
+      }
+    }
+    return trips
+}
+app.get('/trips/:userid', function(req, res) {
+  var user=1;
+  res.send(getUserTrips(user))
+})
+
 function getUser(userid) {
   var userData = readDocument('users', userid);
 
@@ -155,7 +174,7 @@ app.get('/users/:userid', function(req, res) {
     res.send(getUser);
 });
 
-export function updateUser(userid){
+ function updateUser(userid){
     var userData = database.readDocument('users', userid);
 
     // Map the Feed's FeedItem references to actual FeedItem objects.
