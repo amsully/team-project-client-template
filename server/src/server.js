@@ -149,14 +149,33 @@ app.get('/trips/', function(req, res) {
   res.send(getRecentTrips())
 })
 
+function getUserTrips(author) {
+    var trips = getCollection('trip');
+    var userTrips = [];
+    var utSpot = 0;
+    for(var q=0; q<trips.length; q++){
+      if(trips[q].type == 'TripSummaryItem'){
+        if(trips[q].contents.author == author){
+          userTrips[utSpot] = trips[q];
+          utSpot++;
+        }
+      }
+    }
+    return trips
+}
+app.get('/trips/:userid', function(req, res) {
+  var user=1;
+  res.send(getUserTrips(user))
+})
+
 function getUser(userid) {
   var userData = readDocument('users', userid);
-
   return userData;
 }
 
 app.get('/users/:userid', function(req, res) {
-    res.send(getUser);
+    var userid = req.params.userid;
+    res.send(getUser(userid));
 });
 
 function updateUser(userid){
