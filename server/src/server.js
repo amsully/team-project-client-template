@@ -116,19 +116,23 @@ app.delete('/full-trip/:tripid/feeditem/:feeditemid', function(req, res) {
 });
 
 function getModalTrips(){
-  var trips = [];
+  var trips = {
+    trip1: {},
+    trip2: {},
+    trip3: {}
+  };
   var trip1 = getFeedItemSync(4);
   var user = readDocument('users',trip1.contents.author);
   trip1.contents.author = user.FirstName + " " + user.LastName;
-  trips.push(trip1);
+  trips.trip1 = trip1;
   var trip2 = getFeedItemSync(5);
   user = readDocument('users',trip2.contents.author);
   trip2.contents.author = user.FirstName + " " + user.LastName;
-  trips.push(trip2);
+  trips.trip2 = trip2;
   var trip3 = getFeedItemSync(6);
   user = readDocument('users',trip3.contents.author);
   trip3.contents.author = user.FirstName + " " + user.LastName;
-  trips.push(trip3);
+  trips.trip3 = trip3;
   return trips;
 }
 app.get('/modal/trip-sums',function(req,res){
@@ -155,7 +159,7 @@ app.get('/users/:userid', function(req, res) {
     res.send(getUser);
 });
 
-export function updateUser(userid){
+function updateUser(userid){
     var userData = database.readDocument('users', userid);
 
     // Map the Feed's FeedItem references to actual FeedItem objects.
