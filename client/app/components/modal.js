@@ -6,16 +6,18 @@ import {getModalTrips} from '../server';
 export default class Modal extends React.Component{
   constructor(props) {
     super(props);
-      this.state = {
-        tripSums: []
-      };
+    this.state = {
+      trip1: {},
+      trip2: {},
+      trip3: {}
+    }
+    this.refresh.bind(this);
   }
 
   refresh() {
-    // You never created this method in server.js and broke things.
-    //   getModalTripSums(1,(feedData) => {
-    //     this.setState(feedData);
-    // });
+    getModalTrips((feedData) => {
+      this.setState(feedData);
+    });
   }
 
   componentDidMount() {
@@ -67,12 +69,9 @@ export default class Modal extends React.Component{
                     </div>
                   </div>
                 </li>
-                {this.state.tripSums.map((feedItem) => {
-                  return (
-                    <li>
-                      <TripSummary key={feedItem._id} data="feedItem" />
-                    </li>);
-                  })}
+                <li>
+                  <span>Author: {this.state.trip1.contents.author}</span>
+                </li>
               </ul>
             </div>
             <div className="modal-footer">
