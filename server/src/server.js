@@ -7,12 +7,19 @@ var express = require('express');
 var database = require('./database');
 var bodyParser = require('body-parser');
 
+var mongo_express = require('mongo-express/lib/middleware');
+// Import the default Mongo Express configuration
+var mongo_express_config = require('mongo-express/config.default.js');
+
+
 // Creates an Express server.
 var app = express();
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
 var readDocument = database.readDocument;
 var getCollection = database.getCollection;
+
+app.use('/mongo_express', mongo_express(mongo_express_config));
 
 // You run the server from `server`, so `../client/build` is `server/../client/build`.
 // '..' means "go up one directory", so this translates into `client/build`!
