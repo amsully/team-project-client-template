@@ -149,23 +149,27 @@ app.get('/trips/', function(req, res) {
   res.send(getRecentTrips())
 })
 
-function getUserTrips(author) {
-    var trips = getCollection('trip');
-    var userTrips = [];
-    var utSpot = 0;
-    for(var q=0; q<trips.length; q++){
-      if(trips[q].type == 'TripSummaryItem'){
-        if(trips[q].contents.author == author){
-          userTrips[utSpot] = trips[q];
-          utSpot++;
-        }
+function getUserTrips() {
+  var you = 1;
+  var trips = {trip1: {},trip2: {},trip3: {}};
+  trips.trip1 = null;trips.trip2 = null;trips.trip3 = null;//defaults
+  for(var i=1; i<11; i++){
+    var trip = getFeedItemSync(i);
+    if(trip.type == "TripSummaryItem"){//is tripsummary
+      if(trip.contents.author == you){//these are supposed to be your trips
+        var user = readDocument('users',trip.contents.author);
+        trip.contents.author = user.FirstName + " " + user.LastName;//define author bit from modal code
+        if(trips.trip1 == null){trips.trip1 = trip;}//because i couldn't figure it out in a more standard arrayish way
+        else if(trips.trip2 == null){trips.trip2 = trip;}
+        else if(trips.trip3 == null){trips.trip3 = trip;}
       }
     }
-    return trips
+  }
+  return trips;
 }
 app.get('/trips/:userid', function(req, res) {
-  var user=1;
-  res.send(getUserTrips(user))
+  //var user=1;
+  res.send(getUserTrips());
 })
 
 function getUser(userid) {

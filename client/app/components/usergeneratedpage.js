@@ -1,5 +1,5 @@
 import React from 'react';
-import TripSummary from './tripsummary';
+import TripSummary from './tripsumdb';
 import {Link} from 'react-router';
 import {getUserTrips} from '../server';
 
@@ -7,18 +7,55 @@ export default class UserGeneratedPage extends React.Component{
   constructor(props) {
     super(props);
       this.state = {
-        trips: []
-      };
+        trip1: {
+          _id: 0,
+          type: "TripSummaryItem",
+          trip_id: 0,
+          contents: {
+            author: "",
+            trip:0,
+            start:"",
+            destination:"",
+            dates:"",
+            summary: ""
+          }
+        },
+        trip2: {
+          _id: 0,
+          type: "TripSummaryItem",
+          trip_id: 0,
+          contents: {
+            author: "",
+            trip:0,
+            start:"",
+            destination:"",
+            dates:"",
+            summary: ""
+          }
+        },
+        trip3: {
+          _id: 0,
+          type: "TripSummaryItem",
+          trip_id: 0,
+          contents: {
+            author: "",
+            trip:0,
+            start:"",
+            destination:"",
+            dates:"",
+            summary: ""
+          }
+        }
+      }
   }
   refresh() {
-      getUserTrips(1, (trips) => {
-        this.setState({trips: Object.keys(trips).map(k => trips[k])});
-    });
+       getUserTrips((feedData) => {
+         this.setState(feedData);
+     });
   }
   componentDidMount() {
     this.refresh();
   }
-
   render(){
     return (
       <div>
@@ -34,26 +71,9 @@ export default class UserGeneratedPage extends React.Component{
           </div>
         </div>
         <div>
-          {this.state.trips.map((trip) => {
-            return (
-              /*<TripSummary key={trip._id}
-                        author={trip.author}
-                        trip={trip._id}
-                        start={"Boston, MA"}
-                        destination={"Washington DC"}
-                        dates={"2/4/2014 - 2/10/2014"}
-                        summary={"A 7 day trip to Washington DC by airplane for under $9000. Destinations include the Museum of Natural History and the National Air and Space Museum. Planned restaurants include We the Pizza and GrillFish."}>
-              </TripSummary>*/
-              <TripSummary key={trip._id}
-                        author={trip.author}
-                        trip={trip._id}
-                        start={trip.start}
-                        destination={trip.destination}
-                        dates={trip.dates}
-                        summary={trip.summary}>
-              </TripSummary>
-            )
-          })}
+          <TripSummary key={this.state.trip1._id} data={this.state.trip1}/>
+          <TripSummary key={this.state.trip2._id} data={this.state.trip2}/>
+          <TripSummary key={this.state.trip3._id} data={this.state.trip3}/>
         </div>
       </div>);
   }

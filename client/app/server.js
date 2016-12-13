@@ -152,11 +152,8 @@ export function getRecentTrips(cb) {
     });
 }
 
-export function getUserTrips(author, cb) {
-    /**var tripsData = getCollection('trip');
-    emulateServerReturn(tripsData, cb)**/
+export function getUserTrips(cb) {
     sendXHR('GET', '/trips/:userid', undefined, (xhr)=> {
-      // Double check this
       cb(JSON.parse(xhr.responseText));
     });
 }
