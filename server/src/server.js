@@ -128,28 +128,115 @@ MongoClient.connect(url, function(err, db) {
       }
   });
 
-  function getModalTrips(){
+  function getFeedItem(feedItemId, callback) {
+    // Get the feed item with the given ID.
+    db.collection('feedItem').findOne({
+      _id: feedItemId
+    }, function(err, feedItem) {
+      if (err) {
+        // An error occurred.
+        return callback(err);
+      } else if (feedItem === null) {
+        // Feed item not found!
+        return callback(null, null);
+      }
+      else {
+        return callback(null,feedItem);
+      }
+    });
+  }
+  function getUser(userId, callback) {
+    // Get the feed item with the given ID.
+    db.collection('users').findOne({
+      _id: userId
+    }, function(err, user) {
+      if (err) {
+        // An error occurred.
+        return callback(err);
+      } else if (user === null) {
+        // Feed item not found!
+        return callback(null, null);
+      }
+      else {
+        return callback(null,user);
+      }
+    });
+  }
+
+  function getModalTrips(callback){
     var trips = {
       trip1: {},
       trip2: {},
       trip3: {}
     };
-    var trip1 = getFeedItemSync(4);
-    var user = readDocument('users',trip1.contents.author);
-    trip1.contents.author = user.FirstName + " " + user.LastName;
-    trips.trip1 = trip1;
-    var trip2 = getFeedItemSync(5);
-    user = readDocument('users',trip2.contents.author);
-    trip2.contents.author = user.FirstName + " " + user.LastName;
-    trips.trip2 = trip2;
-    var trip3 = getFeedItemSync(6);
-    user = readDocument('users',trip3.contents.author);
-    trip3.contents.author = user.FirstName + " " + user.LastName;
-    trips.trip3 = trip3;
-    return trips;
+    var author = "";
+    getFeedItem(new ObjectID("000000000000000000000004"),function(err, feedItem) {
+      if (err) {
+        // Pass an error to the callback.
+        callback(err);
+      } else {
+        trips.trip1 = feedItem;
+        getFeedItem(new ObjectID("000000000000000000000005"),function(err, feedItem2) {
+          if (err) {
+            // Pass an error to the callback.
+            callback(err);
+          } else {
+            trips.trip2 = feedItem2;
+            getFeedItem(new ObjectID("000000000000000000000006"),function(err, feedItem3) {
+              if (err) {
+                // Pass an error to the callback.
+                callback(err);
+              } else {
+                trips.trip3 = feedItem3;
+                getUser(feedItem3.contents.author,function(err, user) {
+                  if (err) {
+                    // Pass an error to the callback.
+                    callback(err);
+                  } else {
+                    author = user.FirstName + " " + user.LastName;
+                    trips.trip1.contents.author = author;
+                    trips.trip2.contents.author = author;
+                    trips.trip3.contents.author = author;
+                    return callback(null,trips);
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
+    });
   }
+  app.get('/test',function(req,res){
+    getFeedItem(new ObjectID("000000000000000000000006"),function(err, modalData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (modalData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not read modal data ");
+      } else {
+        // Send data.
+        res.send(modalData);
+      }
+    });
+  });
+
   app.get('/modal/trip-sums',function(req,res){
-    res.send(getModalTrips());
+    getModalTrips(function(err, modalData) {
+      if (err) {
+        // A database error happened.
+        // Internal Error: 500.
+        res.status(500).send("Database error: " + err);
+      } else if (modalData === null) {
+        // Couldn't find the feed in the database.
+        res.status(400).send("Could not read modal data ");
+      } else {
+        // Send data.
+        res.send(modalData);
+      }
+    });
   });
 
 
@@ -184,11 +271,6 @@ MongoClient.connect(url, function(err, db) {
     //var user=1;
     res.send(getUserTrips());
   })
-
-  function getUser(userid) {
-    var userData = readDocument('users', userid);
-    return userData;
-  }
 
   app.get('/users/:userid', function(req, res) {
       var userid = req.params.userid;
