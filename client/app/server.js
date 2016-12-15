@@ -112,7 +112,7 @@ export function getModalTrips(cb){
  */
 export function getFullTripData(trip, cb) {
     // We don't need to send a body, so pass in 'undefined' for the body.
-    sendXHR('GET', '/full-trip/1', undefined, (xhr) => {
+    sendXHR('GET', '/full-trip/000000000000000000000001', undefined, (xhr) => {
       // Call the callback with the data.
       cb(JSON.parse(xhr.responseText));
     });
@@ -165,5 +165,5 @@ export function getUserTrips(cb) {
 function emulateServerReturn(data, cb) {
     setTimeout(() => {
         cb(data);
-    }, 4);
+    }, "000000000000000000000004");
 }

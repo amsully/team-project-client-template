@@ -42,20 +42,54 @@ MongoClient.connect(url, function(err, db) {
       return feedItem;
   }
 
-  function getFullTripData(trip) {
+  function getFullTripData(trip, callback) {
       // Get the User object with the id "user".
-      var tripData = database.readDocument('trip', trip);
+      // var tripData = database.readDocument('trip', trip);
 
-      // Map the Feed's FeedItem references to actual FeedItem objects.
-      // Note: While map takes a callback function as an argument, it is
-      // synchronous, not asynchronous. It calls the callback immediately.
-      tripData.accommodations = tripData.accommodations.map(getFeedItemSync);
-      tripData.restaurants    = tripData.restaurants.map(getFeedItemSync);
-      tripData.activities     = tripData.activities.map(getFeedItemSync);
-      // Return FeedData with resolved references.
-      // emulateServerReturn will emulate an asynchronous server operation, which
-      // invokes (calls) the "cb" function some time in the future.
-      return tripData;
+      db.collection('trip').findOne({
+        _id:trip
+      },function(err, tripData){
+        if(err){
+          callback(err);
+        }else{
+          // Map the Feed's FeedItem references to actual FeedItem objects.
+          // Note: While map takes a callback function as an argument, it is
+          // synchronous, not asynchronous. It calls the callback immediately.
+
+          tripData.accommodations.forEach((accommodation) => getFeedItem(accommodation,function(err, accommodation) {
+               if (err) {
+                 // Pass an error to the callback.
+                 callback(err);
+               } else {
+                 tripData.accommodation[accommodation] = accommodation;
+               }
+             } )
+          );
+          tripData.restaurants.forEach((accommodation) => getFeedItem(accommodation,function(err, accommodation) {
+               if (err) {
+                 // Pass an error to the callback.
+                 callback(err);
+               } else {
+                 tripData.accommodation[accommodation] = accommodation;
+               }
+             } )
+          );
+          tripData.activities.forEach((accommodation) => getFeedItem(accommodation,function(err, accommodation) {
+               if (err) {
+                 // Pass an error to the callback.
+                 callback(err);
+               } else {
+                 tripData.accommodation[accommodation] = accommodation;
+               }
+             } )
+          );
+          // Return FeedData with resolved references.
+          // emulateServerReturn will emulate an asynchronous server operation, which
+          // invokes (calls) the "cb" function some time in the future.
+          callback(null, tripData);
+        }
+      });
+
   }
 
   // Using '/full-trip' temporarily. Should switch to '/full-trip/:trip-id'
@@ -63,7 +97,20 @@ MongoClient.connect(url, function(err, db) {
     // URL parameters are stored in req.params
     var tripid = req.params.tripid;
     // Send response.
-    res.send(getFullTripData(tripid));
+    (getFullTripData(new ObjectID(tripid),function(err, tripData) {
+       if (err) {
+         // A database error happened.
+         // Internal Error: 500.
+         res.status(500).send("Database error: " + err);
+       } else if (tripData === null) {
+         // Couldn't find the feed in the database.
+         res.status(400).send("Could not read modal data ");
+       } else {
+         // Send data.
+         console.error(tripData);
+         res.send(tripData);
+       }
+     } ));
   });
 
   // Reset database.
