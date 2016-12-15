@@ -241,8 +241,10 @@ MongoClient.connect(url, function(err, db) {
 
 
   function getRecentTrips() {
-      var tripsData = getCollection('trip');
-      return tripsData
+
+      return db.collection('trips');
+      //var tripsData = getCollection('trip');
+      //return tripsData
   }
 
   app.get('/trips/', function(req, res) {
