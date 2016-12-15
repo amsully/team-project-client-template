@@ -288,8 +288,10 @@ MongoClient.connect(url, function(err, db) {
 
 
   function getRecentTrips() {
-      var tripsData = getCollection('trip');
-      return tripsData
+
+      return db.collection('trips');
+      //var tripsData = getCollection('trip');
+      //return tripsData
   }
 
   app.get('/trips/', function(req, res) {
@@ -325,24 +327,8 @@ MongoClient.connect(url, function(err, db) {
   });
 
   function updateUser(userid){
-      var userData = database.readDocument('users', userid);
-
-      // Map the Feed's FeedItem references to actual FeedItem objects.
-      // Note: While map takes a callback function as an argument, it is
-      // synchronous, not asynchronous. It calls the callback immediately.
-      userData.FirstName      = userData.FirstName.map(getFeedItemSync);
-      userData.LastName       = userData.LastName.map(getFeedItemSync);
-      userData.Username       = userData.Username.map(getFeedItemSync);
-      userData.Password       = userData.Password.map(getFeedItemSync);
-      userData.Email          = userData.Email.map(getFeedItemSync);
-      userData.PhoneNumber    = userData.PhoneNumber.map(getFeedItemSync);
-      userData.Address        = userData.Address.map(getFeedItemSync);
-      userData.feed           = userData.feed.map(getFeedItemSync);
-      // Return FeedData with resolved references.
-      // emulateServerReturn will emulate an asynchronous server operation, which
-      // invokes (calls) the "cb" function some time in the future.
-      return userData;
-  }
+      getUser(userid, (err, user) => {});
+    }
 
   app.put('/users/:userid', function(req,res) {
       var fromUser = 1; // getUserIdFromToken(req.get('Authorization'));
