@@ -39,7 +39,7 @@ class FullPage extends React.Component {
                   <Route path="user-generated/" component={UserGeneratedPage} />
                   <Route path="customize/" component={Customize} />
                   <Route path="full-trip/" component={FullTripPageSet} />
-                  <Route path="profile/" Component={User} />
+                  <Route path="profile/" component={User} />
                 </Route>
               </Router>
             </div>
